@@ -7,6 +7,6 @@ module.exports = {
         dbURI: 'mongodb://testuser:testuser1@ds121834.mlab.com:21834/barterborrow'
     },
     session: {
-        cookieKey: '?'
+        cookieKey: 'thenetninjaisawesomeiguess'
     }
 };
