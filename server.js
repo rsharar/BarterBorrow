@@ -13,7 +13,7 @@ const MongoStore = require('connect-mongo')(session)
 const dbConnection = require('./db') // loads our connection to the mongo database
 const passport = require('./passport')
 const keys = require('./config/keys');
-const cookieSession = require('cookie-session');
+// const cookieSession = require('cookie-session');
 const app = express()
 const PORT = process.env.PORT || 3001
 
@@ -45,10 +45,10 @@ app.use(passport.initialize())
 app.use(passport.session()) // will call the deserializeUser
 
 // set up session cookies
-app.use(cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: [keys.session.cookieKey]
-}));
+// app.use(cookieSession({
+//     maxAge: 24 * 60 * 60 * 1000,
+//     keys: [keys.session.cookieKey]
+// }));
 
 // ===== testing middleware =====
 app.use(function(req, res, next) {
