@@ -13,6 +13,7 @@ const MongoStore = require('connect-mongo')(session)
 const dbConnection = require('./db') // loads our connection to the mongo database
 const passport = require('./passport')
 const keys = require('./config/keys');
+const cookieSession = require('cookie-session');
 const app = express()
 const PORT = process.env.PORT || 3001
 

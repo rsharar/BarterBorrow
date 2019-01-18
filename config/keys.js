@@ -4,7 +4,7 @@ module.exports = {
         clientSecret: 'x5W86lorrCD0hYyGaYVtaWN7'
     },
     mongodb: {
-        dbURI: '?'
+        dbURI: 'mongodb://testuser:testuser1@ds121834.mlab.com:21834/barterborrow'
     },
     session: {
         cookieKey: '?'
