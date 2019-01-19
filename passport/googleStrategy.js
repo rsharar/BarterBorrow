@@ -13,7 +13,7 @@ const strategy = new GoogleStrategy(
 	function(token, tokenSecret, profile, done) {
 		// testing
 		console.log('===== GOOGLE PROFILE =======')
-		console.log(profile)
+		// console.log(profile)
 		console.log('======== END ===========')
 		// code
 		const { id, name, photos } = profile

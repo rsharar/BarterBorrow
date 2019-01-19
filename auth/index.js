@@ -3,10 +3,6 @@ const router = express.Router()
 const User = require('../db/models/user')
 const passport = require('../passport')
 
-// const newFunc = () => {
-// 	console.log('test google verify');
-// }
-
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
 
 router.get('/google/callback',
