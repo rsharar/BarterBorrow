@@ -15,13 +15,15 @@ class PostItemForm extends Component {
             status: '',
         }
         this.handleSubmit = this.handleSubmit.bind(this)
-        // this.handleChange = this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
-    // handleChange(event) {
-    //     this.setState({
-    //         [event.target.name]: event.target.value
-    //     })
-    // }
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+        // able to log keystroke in console
+        console.log(event.target.value)
+    }
     handleSubmit(event) {
         event.preventDefault()
         // TODO - validate!
@@ -60,42 +62,42 @@ class PostItemForm extends Component {
                 <label htmlFor="productTitle">Product Title: </label>
                 <input
                     type="text"
-                    name="productTitle"
+                    name="title"
                     value={this.state.title}
                     onChange={this.handleChange}
                 />
                 <label htmlFor="productCategory">Category: </label>
                 <input
-                    type="productCategory"
-                    name="productCategory"
+                    type="text"
+                    name="category"
                     value={this.state.category}
                     onChange={this.handleChange}
                 />
                 <label htmlFor="productDescription">Description: </label>
                 <input
-                    type="productDescription"
-                    name="productDescription"
+                    type="text"
+                    name="description"
                     value={this.state.description}
                     onChange={this.handleChange}
                 />
                 <label htmlFor="imageURL">Photo: </label>
                 <input
-                    type="imageURL"
-                    name="imageURL"
+                    type="text"
+                    name="imageurl"
                     value={this.state.imageurl}
                     onChange={this.handleChange}
                 />
                 <label htmlFor="productLocation">Location: </label>
                 <input
-                    type="productLocation"
-                    name="productLocation"
+                    type="text"
+                    name="location"
                     value={this.state.location}
                     onChange={this.handleChange}
                 />
                 <label htmlFor="productStatus">Status: </label>
                 <input
-                    type="productStatus"
-                    name="productStatus"
+                    type="text"
+                    name="status"
                     value={this.state.status}
                     onChange={this.handleChange}
                 />
