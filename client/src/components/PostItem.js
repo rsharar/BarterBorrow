@@ -21,8 +21,6 @@ class PostItemForm extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
-        // able to log keystroke in console
-        console.log(event.target.value)
     }
     handleSubmit(event) {
         event.preventDefault()
