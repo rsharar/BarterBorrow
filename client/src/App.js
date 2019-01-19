@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom'
 import './App.css'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm'
+import PostItemForm from './components/PostItem'
 import Header from './components/Header'
 import Home from './components/Home'
 
@@ -15,6 +16,12 @@ const DisplayLinks = props => {
 					<li className="nav-item">
 						<Link to="/" className="nav-link">
 							Home
+						</Link>
+					</li>
+					{/* Redirect to page for user to post item */}
+					<li className="nav-item">
+						<Link to="/user/post" className="nav-link">
+							Post an item
 						</Link>
 					</li>
 					<li>
@@ -130,6 +137,7 @@ class App extends Component {
 						/>}
 				/>
 				<Route exact path="/signup" component={SignupForm} />
+				<Route exact path="/user/post" component={PostItemForm} />
 				{/* <LoginForm _login={this._login} /> */}
 			</div>
 		)
