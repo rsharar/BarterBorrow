@@ -12,7 +12,7 @@ class PostItemForm extends Component {
             description: '',
             imageurl: '',
             location: '',
-            status: '',
+            status: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -63,19 +63,20 @@ class PostItemForm extends Component {
                     name="title"
                     value={this.state.title}
                     onChange={this.handleChange}
+                    placeholder="e.g. DeWalt Angle Grinder"
                 />
                 <label htmlFor="productCategory">Category: </label>
                 <select category={this.state.category} onChange={this.handleChange}>
-                <option value="tools">Tools</option>
-                <option value="sports">Sports</option>
-                <option value="crafts">Crafts</option>
-                <option value="electronics">Electronics</option>
-                <option value="other">Other</option>
-                <input
-                    type="submit"
-                    name="category"
-                    value={this.state.category}
-                />
+                    <option value="tools">Tools</option>
+                    <option value="sports">Sports</option>
+                    <option value="crafts">Crafts</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="other">Other</option>
+                    <input
+                        type="submit"
+                        name="category"
+                        value={this.state.category}
+                    />
                 </select>
                 <label htmlFor="productDescription">Description: </label>
                 <input
@@ -83,6 +84,7 @@ class PostItemForm extends Component {
                     name="description"
                     value={this.state.description}
                     onChange={this.handleChange}
+                    placeholder="Describe your item in a few sentences."
                 />
                 <label htmlFor="imageURL">Photo: </label>
                 <input
@@ -90,6 +92,7 @@ class PostItemForm extends Component {
                     name="imageurl"
                     value={this.state.imageurl}
                     onChange={this.handleChange}
+                    placeholder="Add an image URL"
                 />
                 <label htmlFor="productLocation">Location: </label>
                 <input
@@ -97,6 +100,7 @@ class PostItemForm extends Component {
                     name="location"
                     value={this.state.location}
                     onChange={this.handleChange}
+                    placeholder="Neighborhood, City or State"
                 />
                 <label htmlFor="productStatus">Status: </label>
                 <input
