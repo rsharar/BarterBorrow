@@ -65,12 +65,18 @@ class PostItemForm extends Component {
                     onChange={this.handleChange}
                 />
                 <label htmlFor="productCategory">Category: </label>
+                <select category={this.state.category} onChange={this.handleChange}>
+                <option value="tools">Tools</option>
+                <option value="sports">Sports</option>
+                <option value="crafts">Crafts</option>
+                <option value="electronics">Electronics</option>
+                <option value="other">Other</option>
                 <input
-                    type="text"
+                    type="submit"
                     name="category"
                     value={this.state.category}
-                    onChange={this.handleChange}
                 />
+                </select>
                 <label htmlFor="productDescription">Description: </label>
                 <input
                     type="text"
