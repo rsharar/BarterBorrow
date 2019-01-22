@@ -3,10 +3,10 @@ import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 import './App.css'
 import LoginForm from './components/Login/LoginForm'
-import SignupForm from './components/SignupForm'
-import PostItemForm from './components/PostItem'
-import Header from './components/Header'
-import Home from './components/Home'
+import SignupForm from './components/SignupForm/SignupForm'
+import PostItemForm from './components/PostItem/PostItem'
+import Header from './components/Header/Header'
+import Home from './components/Home/Home'
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
