@@ -127,7 +127,7 @@ class PostItemForm extends Component {
                         onChange={this.handleChange}
                     />
                 </div>
-                <button onClick={this.handleSubmit}>Post my item!</button>
+                <button className="waves-effect waves-light btn" onClick={this.handleSubmit}>Post my item!</button>
             </div>
         )
     }
