@@ -26,12 +26,12 @@ class PostItemForm extends Component {
         event.preventDefault()
         // TODO - validate!
         axios
-            .post('/api/products/:id', {
+            .post('/api/products', {
                 title: this.state.title,
-                owneruserid: this.state.owneruserid,
+                ownerUserId: this.state.owneruserid,
                 category: this.state.category,
                 description: this.state.description,
-                imageurl: this.state.imageurl,
+                imageUrl: this.state.imageurl,
                 location: this.state.location,
                 status: this.state.status,
             })
