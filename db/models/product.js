@@ -6,7 +6,7 @@ mongoose.promise = Promise
 // TODO: add validation for image
 const productSchema = new Schema({
     title: { type: String, unique: false, required: true },
-	ownerUserId: { type: Number, unique: false, required: true },
+	// ownerUserId: { type: Number, unique: false, required: true },
 	description: { type: String, unique: false, required: true },
     imageUrl: { type: String, unique: true, required: true },
     category: { type: String, unique: false, required: true },

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
+import API from "../utils/API";
 // import { Redirect } from 'react-router-dom'
 
 class PostItemForm extends Component {
@@ -25,30 +26,20 @@ class PostItemForm extends Component {
     handleSubmit(event) {
         event.preventDefault()
         // TODO - validate!
-        axios
-            .post('/api/products', {
-                title: this.state.title,
-                ownerUserId: this.state.owneruserid,
-                category: this.state.category,
-                description: this.state.description,
-                imageUrl: this.state.imageurl,
-                location: this.state.location,
-                status: this.state.status,
-            })
-            .then(response => {
-                console.log(response)
-                if (!response.data.errmsg) {
-                    console.log('SUCCESSFUL POST')
-                    this.setState({
-                        redirectTo: '/'
-                    })
-                } else {
-                    console.log('duplicate')
-                }
-            })
-            .catch(err => {
-                console.log("POST ITEM ERROR: ", err)
-            })
+
+        API.postProduct({
+            title: this.state.title,
+            ownerUserId: this.state.owneruserid,
+            category: this.state.category,
+            description: this.state.description,
+            imageUrl: this.state.imageurl,
+            location: this.state.location,
+            status: this.state.status
+        }).then(data => {
+            console.log(data)
+        }).catch(err => {
+            console.log("POST ITEM ERROR: ", err)
+        })
     }
     render() {
         // if (this.state.redirectTo) {

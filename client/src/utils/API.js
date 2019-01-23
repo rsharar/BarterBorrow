@@ -14,7 +14,7 @@ export default {
         return axios.post("/api/products", productData);
     },
     editProduct: function (id) {
-        
+
     },
     // Deletes the product with the given id
     deleteProduct: function (id) {
