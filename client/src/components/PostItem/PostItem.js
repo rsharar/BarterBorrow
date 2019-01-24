@@ -26,6 +26,7 @@ class PostItemForm extends Component {
     handleSubmit(event) {
         event.preventDefault()
         // TODO - validate!
+        if (this.state.title && this.state.description){
         API.postProduct({
             title: this.state.title,
             owneruserid: this.state.owneruserid,
@@ -44,6 +45,7 @@ class PostItemForm extends Component {
                 console.log("POST ITEM ERROR: ", err)
             });
         }
+    }
     render() {
         return (
             <div className="postitemForm">
