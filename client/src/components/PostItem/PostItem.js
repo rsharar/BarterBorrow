@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import API from '../../utils/API';
 import './style.css'
 // import { Redirect } from 'react-router-dom'
 
@@ -26,35 +26,25 @@ class PostItemForm extends Component {
     handleSubmit(event) {
         event.preventDefault()
         // TODO - validate!
-        axios
-            .post('/api/products/:id', {
-                title: this.state.title,
-                owneruserid: this.state.owneruserid,
-                category: this.state.category,
-                description: this.state.description,
-                imageurl: this.state.imageurl,
-                location: this.state.location,
-                status: this.state.status,
-            })
+        API.postProduct({
+            title: this.state.title,
+            owneruserid: this.state.owneruserid,
+            // TODO: category not getting captured
+            category: this.state.category,
+            description: this.state.description,
+            imageurl: this.state.imageurl,
+            location: this.state.location,
+            status: this.state.status,
+        })
             .then(response => {
                 console.log(response)
-                if (!response.data.errmsg) {
-                    console.log('SUCCESSFUL POST')
-                    this.setState({
-                        redirectTo: '/'
-                    })
-                } else {
-                    console.log('duplicate')
-                }
+                console.log("product posted!")
             })
             .catch(err => {
                 console.log("POST ITEM ERROR: ", err)
-            })
-    }
+            });
+        }
     render() {
-        // if (this.state.redirectTo) {
-        //     return <Redirect to={{ pathname: this.state.redirectTo }} />
-        // }
         return (
             <div className="postitemForm">
                 <h1>Post an Item</h1>
@@ -77,11 +67,11 @@ class PostItemForm extends Component {
                         <option value="crafts">Crafts</option>
                         <option value="electronics">Electronics</option>
                         <option value="other">Other</option>
-                        <input
+                        {/* <input
                             type="submit"
                             name="category"
                             value={this.state.category}
-                        />
+                        /> */}
                     </select>
                 </div>
                 <div className="postItemFields">
@@ -127,7 +117,7 @@ class PostItemForm extends Component {
                         onChange={this.handleChange}
                     />
                 </div>
-                <button className="waves-effect waves-light btn" onClick={this.handleSubmit}>Post my item!</button>
+                <button onClick={this.handleSubmit}>Post my item!</button>
             </div>
         )
     }
