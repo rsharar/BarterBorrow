@@ -9,7 +9,7 @@ class PostItemForm extends Component {
         this.state = {
             title: '',
             owneruserid: '',
-            category: '',
+            category: 'val',
             description: '',
             imageurl: '',
             location: '',
@@ -20,30 +20,31 @@ class PostItemForm extends Component {
     }
     handleChange(event) {
         this.setState({
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
         })
     }
+
     handleSubmit(event) {
         event.preventDefault()
         // Validation with title and description fields
-        if (this.state.title && this.state.description){
-        API.postProduct({
-            title: this.state.title,
-            // owneruserid: this.state.owneruserid,
-            // TODO: category not getting captured
-            // category: this.state.category,
-            description: this.state.description,
-            imageurl: this.state.imageurl,
-            location: this.state.location,
-            status: this.state.status,
-        })
-            .then(response => {
-                console.log(response)
-                console.log("product posted!")
+        if (this.state.title && this.state.description) {
+            API.postProduct({
+                title: this.state.title,
+                // owneruserid: this.state.owneruserid,
+                // TODO: category not getting captured
+                category: this.state.category,
+                description: this.state.description,
+                imageurl: this.state.imageurl,
+                location: this.state.location,
+                status: this.state.status,
             })
-            .catch(err => {
-                console.log("POST ITEM ERROR: ", err)
-            });
+                .then(response => {
+                    console.log(response)
+                    console.log("product posted!")
+                })
+                .catch(err => {
+                    console.log("POST ITEM ERROR: ", err)
+                });
         }
     }
     render() {
@@ -63,7 +64,7 @@ class PostItemForm extends Component {
                 </div>
                 <div className="postItemFields">
                     <label htmlFor="productCategory">Category: </label>
-                    <select category={this.state.category} onChange={this.handleChange}>
+                    <select name="category" value={this.state.category} onChange={this.handleChange}>
                         <option value="tools">Tools</option>
                         <option value="sports">Sports</option>
                         <option value="crafts">Crafts</option>
