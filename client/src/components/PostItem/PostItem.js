@@ -25,13 +25,13 @@ class PostItemForm extends Component {
     }
     handleSubmit(event) {
         event.preventDefault()
-        // TODO - validate!
+        // Validation with title and description fields
         if (this.state.title && this.state.description){
         API.postProduct({
             title: this.state.title,
-            owneruserid: this.state.owneruserid,
+            // owneruserid: this.state.owneruserid,
             // TODO: category not getting captured
-            category: this.state.category,
+            // category: this.state.category,
             description: this.state.description,
             imageurl: this.state.imageurl,
             location: this.state.location,

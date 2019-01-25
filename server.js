@@ -12,6 +12,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const dbConnection = require('./db') // loads our connection to the mongo database
 const passport = require('./passport')
+const routes = require('./routes')
 const keys = require('./config/keys');
 // const cookieSession = require('cookie-session');
 const app = express()
@@ -84,6 +85,7 @@ if (process.env.NODE_ENV === 'production') {
 
 /* Express app ROUTING */
 app.use('/auth', require('./auth'))
+app.use(routes)
 
 // ====== Error handler ====
 app.use(function(err, req, res, next) {
