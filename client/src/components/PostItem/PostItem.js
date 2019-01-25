@@ -9,7 +9,7 @@ class PostItemForm extends Component {
         this.state = {
             title: '',
             owneruserid: '',
-            category: 'val',
+            category: '',
             description: '',
             imageurl: '',
             location: '',
