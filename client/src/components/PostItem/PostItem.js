@@ -49,10 +49,10 @@ class PostItemForm extends Component {
     }
     render() {
         return (
-            <div className="postitemForm">
-                <h1>Post an Item</h1>
+            <div className="container z-depth-3" id="postItemForm">
+                <h4>Post an Item</h4>
                 <div className="postItemFields">
-                    <label htmlFor="productTitle">Product Title: </label>
+                    <label className="formTitle" htmlFor="productTitle">Product Title: </label>
                     <input
                         className="formElement"
                         type="text"
@@ -63,22 +63,18 @@ class PostItemForm extends Component {
                     />
                 </div>
                 <div className="postItemFields">
-                    <label htmlFor="productCategory">Category: </label>
-                    <select name="category" value={this.state.category} onChange={this.handleChange}>
+                    <label className="formTitle" htmlFor="productCategory">Category: </label>
+                    <select name="category" className="formElement"
+                        value={this.state.category} onChange={this.handleChange}>
                         <option value="tools">Tools</option>
                         <option value="sports">Sports</option>
                         <option value="crafts">Crafts</option>
                         <option value="electronics">Electronics</option>
                         <option value="other">Other</option>
-                        {/* <input
-                            type="submit"
-                            name="category"
-                            value={this.state.category}
-                        /> */}
                     </select>
                 </div>
                 <div className="postItemFields">
-                    <label htmlFor="productDescription">Description: </label>
+                    <label className="formTitle" htmlFor="productDescription">Description: </label>
                     <input
                         className="formElement"
                         type="text"
@@ -89,7 +85,7 @@ class PostItemForm extends Component {
                     />
                 </div>
                 <div className="postItemFields">
-                    <label htmlFor="imageURL">Photo: </label>
+                    <label className="formTitle" htmlFor="imageURL">Photo: </label>
                     <input
                         className="formElement"
                         type="text"
@@ -100,7 +96,7 @@ class PostItemForm extends Component {
                     />
                 </div>
                 <div className="postItemFields">
-                    <label htmlFor="productLocation">Location: </label>
+                    <label className="formTitle" htmlFor="productLocation">Location: </label>
                     <input
                         className="formElement"
                         type="text"
@@ -111,16 +107,18 @@ class PostItemForm extends Component {
                     />
                 </div>
                 <div className="postItemFields">
-
-                    <label htmlFor="productStatus">Status: </label>
+                    <label className="formTitle" htmlFor="productStatus">Status: </label>
                     <input
                         type="text"
                         name="status"
+                        placeholder="To borrow? To barter? To give away?"
                         value={this.state.status}
                         onChange={this.handleChange}
                     />
                 </div>
-                <button onClick={this.handleSubmit}>Post my item!</button>
+                <button id="postFormBtn" onClick={this.handleSubmit} className="btn waves-effect waves-light" type="submit" name="action">Post my Item!
+    <i className="material-icons right">send</i>
+                </button>
             </div>
         )
     }
