@@ -14,6 +14,7 @@ class PostItemForm extends Component {
             imageurl: '',
             location: '',
             status: ''
+
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -70,11 +71,6 @@ class PostItemForm extends Component {
                         <option value="crafts">Crafts</option>
                         <option value="electronics">Electronics</option>
                         <option value="other">Other</option>
-                        {/* <input
-                            type="submit"
-                            name="category"
-                            value={this.state.category}
-                        /> */}
                     </select>
                 </div>
                 <div className="postItemFields">
@@ -92,7 +88,7 @@ class PostItemForm extends Component {
                     <label htmlFor="imageURL">Photo: </label>
                     <input
                         className="formElement"
-                        type="text"
+                        type="file"
                         name="imageurl"
                         value={this.state.imageurl}
                         onChange={this.handleChange}
