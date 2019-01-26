@@ -2,6 +2,10 @@
     width: 500px;
 }
 
+.select{
+    display: block;
+}
+
 h4 {
     padding-top: 20px;
 }

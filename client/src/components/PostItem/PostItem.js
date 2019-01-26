@@ -65,7 +65,7 @@ class PostItemForm extends Component {
                 <div className="postItemFields">
                     <label className="formTitle" htmlFor="productCategory">Category: </label>
                     <select name="category" className="formElement"
-                        value={this.state.category} onChange={this.handleChange}>
+                        value={this.state.category} onChange={this.handleChange} style={{display: 'inline-block'}}>
                         <option value="tools">Tools</option>
                         <option value="sports">Sports</option>
                         <option value="crafts">Crafts</option>

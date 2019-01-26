@@ -7,12 +7,14 @@ import SignupForm from './components/SignupForm/SignupForm'
 import PostItemForm from './components/PostItem/PostItem'
 // import Header from './components/Header/Header'
 import Home from './components/Home/Home'
+import { Z_BLOCK } from 'zlib';
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
 		return (
 			<nav>
 				<div className="nav-wrapper">
+					<a href="/" class="brand-logo">Logo</a>
 					<ul className="hide-on-med-and-down center-align">
 						<li>
 							<div className="row searchBar">
@@ -22,6 +24,7 @@ const DisplayLinks = props => {
 								</div>
 							</div>
 						</li>
+
 						{/* Redirect to page for user to post item */}
 						<li className="nav-item">
 							<Link to="/user/post" className="nav-link">
@@ -41,7 +44,7 @@ const DisplayLinks = props => {
 		return (
 			<nav>
 				<div className="nav-wrapper">
-
+					<a href="/" class="brand-logo">Logo</a>
 					<ul className="hide-on-med-and-down center-align">
 						<li>
 							<div className="row searchBar">
