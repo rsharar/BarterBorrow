@@ -88,7 +88,7 @@ class PostItemForm extends Component {
                     <label htmlFor="imageURL">Photo: </label>
                     <input
                         className="formElement"
-                        type="file"
+                        type="text"
                         name="imageurl"
                         value={this.state.imageurl}
                         onChange={this.handleChange}
