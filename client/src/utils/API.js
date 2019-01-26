@@ -7,16 +7,39 @@ export default {
     },
     // Gets the product with the given id
     getOneProduct: function (id) {
-        return axios.get("/api/products/" + id)
+        return axios.get("/api/products/" + id);
     },
     // Posts a product to the database
     postProduct: function (productData) {
         return axios.post("/api/products", productData);
     },
-    editProduct: function (id) {
+    editProduct: function (id, productData) {
+        return axios.put("/api/products/" + id, productData);
     },
     // Deletes the product with the given id
     deleteProduct: function (id) {
         return axios.delete("/api/products/" + id);
+    },
+
+    // ------------------------------
+
+    // Gets all proposals
+    getAllProposalsWithUser: function () {
+        return axios.get("/api/proposals");
+    },
+    // Gets the proposal with the given id
+    getOneProposal: function (id) {
+        return axios.get("/api/proposals/" + id);
+    },
+    // Posts a proposal to the database
+    postProposal: function (proposalData) {
+        return axios.post("/api/proposals", proposalData);
+    },
+    editProposal: function (id, proposalData) {
+        return axios.put("/api/proposals/" + id, proposalData);
+    },
+    // Deletes the proposal with the given id
+    deleteProposal: function (id) {
+        return axios.delete("/api/proposals/" + id);
     }
 };
