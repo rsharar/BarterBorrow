@@ -28,10 +28,7 @@ class PostItemForm extends Component {
                 })
                 console.log(response.data.user._id)
 			} else {
-				this.setState({
-					loggedIn: false,
-					user: null
-				})
+                console.log("no logged in user")
             }
         })
     }
