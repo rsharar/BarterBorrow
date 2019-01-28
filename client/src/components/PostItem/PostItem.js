@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import API from '../../utils/API';
 import './style.css'
+import axios from 'axios'
 // import { Redirect } from 'react-router-dom'
 
 class PostItemForm extends Component {
@@ -18,7 +19,26 @@ class PostItemForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
+
+    componentDidMount() {
+		axios.get('/auth/user').then(response => {
+			if (!!response.data.user) {
+				this.setState({
+					owneruserid: response.data.user._id
+                })
+                console.log(response.data.user._id)
+			} else {
+				this.setState({
+					loggedIn: false,
+					user: null
+				})
+            }
+        })
+    }
+		
+
     handleChange(event) {
+        console.log(this.props.id)
         this.setState({
             [event.target.name]: event.target.value,
         })
@@ -30,8 +50,7 @@ class PostItemForm extends Component {
         if (this.state.title && this.state.description) {
             API.postProduct({
                 title: this.state.title,
-                // owneruserid: this.state.owneruserid,
-                // TODO: category not getting captured
+                owneruserid: this.state.owneruserid,
                 category: this.state.category,
                 description: this.state.description,
                 imageurl: this.state.imageurl,
@@ -65,7 +84,7 @@ class PostItemForm extends Component {
                 <div className="postItemFields">
                     <label className="formTitle" htmlFor="productCategory">Category: </label>
                     <select name="category" className="formElement"
-                        value={this.state.category} onChange={this.handleChange} style={{display: 'inline-block'}}>
+                        value={this.state.category} onChange={this.handleChange} style={{ display: 'inline-block' }}>
                         <option value="tools">Tools</option>
                         <option value="sports">Sports</option>
                         <option value="crafts">Crafts</option>

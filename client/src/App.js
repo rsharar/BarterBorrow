@@ -7,14 +7,14 @@ import SignupForm from './components/SignupForm/SignupForm'
 import PostItemForm from './components/PostItem/PostItem'
 // import Header from './components/Header/Header'
 import Home from './components/Home/Home'
-import { Z_BLOCK } from 'zlib';
+// import { Z_BLOCK } from 'zlib';
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
 		return (
 			<nav>
 				<div className="nav-wrapper">
-					<a href="/" class="brand-logo">Logo</a>
+					<a href="/" className="brand-logo">Logo</a>
 					<ul className="hide-on-med-and-down center-align">
 						<li>
 							<div className="row searchBar">
@@ -44,7 +44,7 @@ const DisplayLinks = props => {
 		return (
 			<nav>
 				<div className="nav-wrapper">
-					<a href="/" class="brand-logo">Logo</a>
+					<a href="/" className="brand-logo">Logo</a>
 					<ul className="hide-on-med-and-down center-align">
 						<li>
 							<div className="row searchBar">
@@ -83,9 +83,9 @@ class App extends Component {
 	}
 	componentDidMount() {
 		axios.get('/auth/user').then(response => {
-			console.log(response.data)
+			// console.log(response.data)
 			if (!!response.data.user) {
-				console.log('THERE IS A USER')
+				// console.log('THERE IS A USER')
 				this.setState({
 					loggedIn: true,
 					user: response.data.user
