@@ -5,7 +5,7 @@ mongoose.promise = Promise
 const proposalSchema = new Schema({
     userIdA: { type: String, unique: false, required: true },
     userIdB: { type: String, unique: false, required: true },
-    chatHistory: { type: Array, unique: true, required: false},
+    chatHistory: { type: Array, unique: true, required: true, default: [] },
     status: { type: String, unique: false, required: true },
 	createdate: { 
 		type: Date, required: true, default: Date.now }

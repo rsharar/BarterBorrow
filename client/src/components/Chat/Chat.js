@@ -1,13 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 
-export default class Chat extends Component {
+const Chat = props => {
+    let history = props.chatHistory;
     
-  render() {
+
     return (
-      <div>
-        
-      </div>
+        <div>
+            <ul id='messages'></ul>
+        </div>
     )
-  }
 }
+
+export default Chat;
