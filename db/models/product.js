@@ -7,7 +7,7 @@ mongoose.promise = Promise
 // TODO: obtain userid for owneruserid
 const productSchema = new Schema({
     title: { type: String, unique: false, required: true },
-	owneruserid: { type: Number, unique: false, required: false },
+	owneruserid: { type: String, unique: false, required: true },
 	description: { type: String, unique: false, required: true },
     imageurl: { type: String, unique: true, required: true },
     category: { type: String, unique: false, required: false },
