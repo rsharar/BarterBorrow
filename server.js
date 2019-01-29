@@ -17,6 +17,8 @@ const keys = require('./config/keys');
 // const cookieSession = require('cookie-session');
 const app = express()
 const PORT = process.env.PORT || 3001
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 // ===== Middleware ====
 app.use(morgan('dev'))
