@@ -14,7 +14,7 @@ const DisplayLinks = props => {
 		return (
 			<nav>
 				<div className="nav-wrapper">
-					<a href="/" className="brand-logo">Logo</a>
+					<a href="/" className="brand-logo">BorrowBarter</a>
 					<ul className="hide-on-med-and-down center-align">
 						<li>
 							<div className="row searchBar">
@@ -44,7 +44,7 @@ const DisplayLinks = props => {
 		return (
 			<nav>
 				<div className="nav-wrapper">
-					<a href="/" className="brand-logo">Logo</a>
+					<a href="/" className="brand-logo">BorrowBarter</a>
 					<ul className="hide-on-med-and-down center-align">
 						<li>
 							<div className="row searchBar">
