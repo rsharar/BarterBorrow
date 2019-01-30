@@ -11,6 +11,11 @@ module.exports = {
             .then(dbProduct => res.json(dbProduct))
             .catch(err => res.status(422).json(err));
     },
+    find: function (req, res){
+        db.Product.find(req.params.category)
+            .then(dbProduct => res.json(dbProduct))
+            .catch(err => res.status(422).json(err));
+    },
     create: function (req, res) {
         db.Product.create(req.body)
             .then(dbProduct => res.json(dbProduct))

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import API from '../../utils/API';
 import './style.css'
+
 
 export default class NavCategory extends Component {
     constructor() {
@@ -7,7 +9,7 @@ export default class NavCategory extends Component {
         this.state = {
             category: '',
         }
-        // this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
 
@@ -17,30 +19,22 @@ export default class NavCategory extends Component {
             [event.target.name]: event.target.value,
         })
     }
-    // handleSubmit(event) {
-    //     event.preventDefault()
-    //     // Validation with title and description fields
-    //     if (this.state.title && this.state.description) {
-    //         API.postProduct({
-    //             title: this.state.title,
-    //             owneruserid: this.state.owneruserid,
-    //             category: this.state.category,
-    //             description: this.state.description,
-    //             imageurl: this.state.imageurl,
-    //             location: this.state.location,
-    //             status: this.state.status,
-    //         })
-    //             .then(response => {
-    //                 console.log(response)
-    //                 console.log("product posted!")
-    //             })
-    //             .catch(err => {
-    //                 console.log("POST ITEM ERROR: ", err)
-    //             });
-    //     }
-    // }
-
-
+	handleSubmit(event) {
+		event.preventDefault()
+		// Validation with category selected
+		if (this.state.category) {
+			API.getProductsByCategory({
+				category: this.state.category
+			})
+				.then(response => {
+					console.log(response)
+					console.log("products found by category!")
+				})
+				.catch(err => {
+					console.log("SEARCH BY CATEGORY ERROR: ", err)
+				});
+		}
+	}
     render() {
         return (
             <div>
@@ -55,7 +49,12 @@ export default class NavCategory extends Component {
                         <option value="other">Other</option>
                     </select>
                 </div>
+                    <button id="searchBtn"
+                        onClick={this.handleSubmit} 
+                        className="btn waves-effect waves-light" type="submit" name="action">Find some items!
+                        </button>
             </div>
+
         )
     }
 }

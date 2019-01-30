@@ -13,6 +13,10 @@ export default {
     postProduct: function (productData) {
         return axios.post("/api/products", productData);
     },
+    // Gets products by category name
+    getProductsByCategory: function(category) {
+        return axios.get("/api/products", + category);
+    },
     editProduct: function (id) {
     },
     // Deletes the product with the given id
