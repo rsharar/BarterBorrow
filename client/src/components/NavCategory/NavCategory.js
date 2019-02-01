@@ -8,6 +8,7 @@ export default class NavCategory extends Component {
         super()
         this.state = {
             category: '',
+            products:[],
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -20,6 +21,7 @@ export default class NavCategory extends Component {
         })
     }
 	handleSubmit(event) {
+        console.log(this.state.category);
 		event.preventDefault()
 		// Validation with category selected
 		if (this.state.category) {
@@ -28,8 +30,8 @@ export default class NavCategory extends Component {
                 category: this.state.category
             })
 				.then(response => {
+                    this.setState({ products: response.data })
 					console.log(response)
-					console.log("products found by category!")
 				})
 				.catch(err => {
 					console.log("SEARCH BY CATEGORY ERROR: ", err)

@@ -14,8 +14,9 @@ export default {
         return axios.post("/api/products", productData);
     },
     // Gets products by category name
-    getProductsByCategory: function(category) {
-        return axios.get("/api/products/", + category);
+    getProductsByCategory: function(categoryObj) {
+        let category = categoryObj.category;
+        return axios.get("/api/products/categories/" + category);
     },
     editProduct: function (id) {
     },

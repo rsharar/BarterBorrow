@@ -7,15 +7,13 @@ router.route("/")
     .post(productController.create);
 
 // Matches with "/api/products/:id"
-router
-    .route("/:id")
+router.route("/:id")
     .get(productController.findById)
     .put(productController.update)
     .delete(productController.remove);
 
 // Matches with "/api/products/:category"
-router
-    .route("/:category")
-    .get(productController.find);
+router.route("/categories/:category")
+    .get(productController.findByCategory);
 
 module.exports = router;
