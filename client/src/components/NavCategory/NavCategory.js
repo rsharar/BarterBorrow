@@ -23,9 +23,10 @@ export default class NavCategory extends Component {
 		event.preventDefault()
 		// Validation with category selected
 		if (this.state.category) {
+            // this.state.category is updated based on dropdown selection
 			API.getProductsByCategory({
-				category: this.state.category
-			})
+                category: this.state.category
+            })
 				.then(response => {
 					console.log(response)
 					console.log("products found by category!")
@@ -42,15 +43,16 @@ export default class NavCategory extends Component {
                     <label className="formTitle" htmlFor="productCategory">Category: </label>
                     <select name="category" className="formElement"
                         value={this.state.category} onChange={this.handleChange} style={{ display: 'inline-block' }}>
-                        <option value="tools">Tools</option>
-                        <option value="sports">Sports</option>
+                        <option value="tools">All</option>
                         <option value="crafts">Crafts</option>
                         <option value="electronics">Electronics</option>
+                        <option value="sports">Sports</option>
+                        <option value="tools">Tools</option>
                         <option value="other">Other</option>
                     </select>
                 </div>
                     <button id="searchBtn"
-                        onClick={this.handleSubmit} 
+                        onClick={this.handleSubmit}
                         className="btn waves-effect waves-light" type="submit" name="action">Find some items!
                         </button>
             </div>

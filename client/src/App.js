@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import API from './utils/API';
+// import API from './utils/API';
 import { Route, Link } from 'react-router-dom'
 import './App.css'
 import NavCategory from './components/NavCategory/NavCategory'
@@ -69,12 +69,6 @@ const DisplayLinks = props => {
 							<NavCategory />
 						</li>
 						{/* Redirect to page for user to post item */}
-						<li>
-							<button id="searchBtn"
-								// onClick={this.handleSubmit} 
-								className="btn waves-effect waves-light" type="submit" name="action">Find some items!
-                </button>
-						</li>
 						<li className="nav-item">
 							<Link to="/login" className="nav-link">
 								login
@@ -100,7 +94,7 @@ class App extends Component {
 			user: null,
 			category: '',
 		}
-		this.handleSubmit = this.handleSubmit.bind(this)
+		// this.handleSubmit = this.handleSubmit.bind(this)
 		this._logout = this._logout.bind(this)
 		this._login = this._login.bind(this)
 	}
@@ -153,23 +147,7 @@ class App extends Component {
 				}
 			})
 	}
-	
-	handleSubmit(event) {
-		event.preventDefault()
-		// Validation with title and description fields
-		if (this.state.category) {
-			API.getProductsByCategory({
-				category: this.state.category
-			})
-				.then(response => {
-					console.log(response)
-					console.log("products found by category!")
-				})
-				.catch(err => {
-					console.log("SEARCH BY CATEGORY ERROR: ", err)
-				});
-		}
-	}
+
 	render() {
 		return (
 			<div className="App">
