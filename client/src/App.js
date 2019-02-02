@@ -14,21 +14,23 @@ const DisplayLinks = props => {
 			<nav>
 				<div className="nav-wrapper row">
 					<ul id="nav-mobile" className="hide-on-med-and-down center">
-							<NavCategory />
+						<NavCategory />
 						{/* Redirect to page for user to post item */}
-						<div className="col s2">
-						<li className="nav-item right">
-							<Link to="/user/post" className="nav-link">
-								Post an item
+						<div className="col s4"></div>
+
+						<div className="col s1">
+							<li className="nav-item right">
+								<Link to="/user/post" className="nav-link">
+									Post an item
 						</Link>
-						</li>
+							</li>
 						</div>
-						<div className="col s2">
-						<li className="nav-item right">
-							<Link to="#" className="nav-link" onClick={props._logout}>
-								Logout
+						<div className="col s1">
+							<li className="nav-item right">
+								<Link to="#" className="nav-link" onClick={props._logout}>
+									Logout
 						</Link>
-						</li>
+							</li>
 						</div>
 					</ul>
 				</div>
@@ -37,22 +39,25 @@ const DisplayLinks = props => {
 	} else {
 		return (
 			<nav>
-				<div className="nav-wrapper">
-					<ul className="hide-on-med-and-down center">
-						<li>
-							<NavCategory />
-						</li>
+				<div className="nav-wrapper row">
+					<ul id="nav-mobile" className="hide-on-med-and-down center">
+						<NavCategory />
 						{/* Redirect to page for user to post item */}
-						<li className="nav-item">
-							<Link to="/login" className="nav-link">
-								login
+						<div className="col s4"></div>
+						<div className="col s1">
+							<li className="nav-item right">
+								<Link to="/login" className="nav-link">
+									login
 						</Link>
-						</li>
-						<li className="nav-item">
+							</li>
+						</div>
+						<div className="col s1">
+						<li className="nav-item right">
 							<Link to="/signup" className="nav-link">
 								sign up
 						</Link>
 						</li>
+						</div>
 					</ul>
 				</div>
 			</nav>
