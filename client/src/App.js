@@ -17,23 +17,8 @@ const DisplayLinks = props => {
 			<nav>
 				<div className="nav-wrapper">
 					<ul className="hide-on-med-and-down center">
-						<li>
-							<div className="row searchBar">
-								<div className="input-field col s6 s12 red-text">
-									<i className="material-icons left">search</i>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div className="s6">
-								<input type="text" placeholder="search" id="autocomplete-input" className="autocomplete black-text" />
-							</div>
-						</li>
-						<li>
-							<NavCategory />
-						</li>
+						<NavCategory />
 						{/* Redirect to page for user to post item */}
-
 						<li className="nav-item">
 							<Link to="/user/post" className="nav-link">
 								Post an item
@@ -53,18 +38,6 @@ const DisplayLinks = props => {
 			<nav>
 				<div className="nav-wrapper">
 					<ul className="hide-on-med-and-down center">
-						<li>
-							<div className="row searchBar">
-								<div className="input-field col s6 s12 red-text">
-									<i className="material-icons left">search</i>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div className="s6">
-								<input type="text" placeholder="search" id="autocomplete-input" className="autocomplete black-text" />
-							</div>
-						</li>
 						<li>
 							<NavCategory />
 						</li>

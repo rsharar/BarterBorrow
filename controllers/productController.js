@@ -12,8 +12,13 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     findByCategory: function (req, res){
-        console.log("params" + req.params.category);
         db.Product.find({category: req.params.category})
+            .then(dbProduct => res.json(dbProduct))
+            .catch(err => res.status(422).json(err));
+    },
+    findByTitle: function (req, res){
+        let searchQuery = req.params.searchQuery;
+        db.Product.find({title: searchQuery})
             .then(dbProduct => res.json(dbProduct))
             .catch(err => res.status(422).json(err));
     },

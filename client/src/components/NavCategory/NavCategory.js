@@ -8,39 +8,69 @@ export default class NavCategory extends Component {
         super()
         this.state = {
             category: '',
-            products:[],
+            searchQuery: '',
+            products: [],
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
 
     handleChange(event) {
-        console.log(this.props.id)
         this.setState({
             [event.target.name]: event.target.value,
         })
     }
-	handleSubmit(event) {
-        console.log(this.state.category);
-		event.preventDefault()
-		// Validation with category selected
-		if (this.state.category) {
+    handleSubmit(event) {
+        console.log("Search: " + this.state.searchQuery)
+        event.preventDefault()
+        // Validation with category selected
+        if (this.state.category) {
             // this.state.category is updated based on dropdown selection
-			API.getProductsByCategory({
+            API.getProductsByCategory({
                 category: this.state.category
             })
-				.then(response => {
+                .then(response => {
+                    // return all matching products with category
+                    console.log(response.data)
+                    // update state of empty products []
                     this.setState({ products: response.data })
-					console.log(response)
-				})
-				.catch(err => {
-					console.log("SEARCH BY CATEGORY ERROR: ", err)
-				});
-		}
-	}
+                })
+                .catch(err => {
+                    console.log("SEARCH BY CATEGORY ERROR: ", err)
+                });
+        }
+        if (this.state.searchQuery.length > 1) {
+            API.getProductsBySearch({
+                searchQuery: this.state.searchQuery
+            })
+                .then(response => {
+                    // return all matching products with category
+                    console.log(response.data)
+                    // update state of empty products []
+                    this.setState({ products: response.data })
+                })
+                .catch(err => {
+                    console.log("SEARCH BY CATEGORY ERROR: ", err)
+                });
+        }
+    }
     render() {
         return (
             <div>
+                <div className="row searchBar">
+                    <div className="input-field col s6 s12 red-text">
+                        <i className="material-icons left">search</i>
+                    </div>
+                </div>
+                <div className="s6">
+                    <input 
+                    name="searchQuery" 
+                    type="text" 
+                    value={this.state.searchQuery}
+                    onChange={this.handleChange}
+                    placeholder="search" 
+                    id="autocomplete-input" className="autocomplete black-text" />
+                </div>
                 <div className="postItemFields">
                     <label className="formTitle" htmlFor="productCategory">Category: </label>
                     <select name="category" className="formElement"
@@ -53,10 +83,10 @@ export default class NavCategory extends Component {
                         <option value="other">Other</option>
                     </select>
                 </div>
-                    <button id="searchBtn"
-                        onClick={this.handleSubmit}
-                        className="btn waves-effect waves-light" type="submit" name="action">Find some items!
-                        </button>
+                <button id="searchBtn"
+                    onClick={this.handleSubmit}
+                    className="btn waves-effect waves-light" type="submit" name="action">Find some items!
+                </button>
             </div>
 
         )

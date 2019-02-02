@@ -18,6 +18,11 @@ export default {
         let category = categoryObj.category;
         return axios.get("/api/products/categories/" + category);
     },
+    // Gets products by searching for title
+    getProductsBySearch: function(searchObj) {
+        let searchQuery = searchObj.searchQuery;
+        return axios.get("/api/products/titles/" + searchQuery);
+    },
     editProduct: function (id) {
     },
     // Deletes the product with the given id

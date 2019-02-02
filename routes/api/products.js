@@ -12,8 +12,12 @@ router.route("/:id")
     .put(productController.update)
     .delete(productController.remove);
 
-// Matches with "/api/products/:category"
+// Matches with "/api/products/categories/:category"
 router.route("/categories/:category")
     .get(productController.findByCategory);
+
+// Matches with "/api/products/titles/:searchQuery"
+router.route("/titles/:searchQuery")
+    .get(productController.findByTitle);
 
 module.exports = router;
