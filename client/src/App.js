@@ -1,34 +1,35 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-// import API from './utils/API';
 import { Route, Link } from 'react-router-dom'
 import './App.css'
 import NavCategory from './components/NavCategory/NavCategory'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm/SignupForm'
 import PostItemForm from './components/PostItem/PostItem'
-// import Header from './components/Header/Header'
 import Home from './components/Home/Home'
-// import { Z_BLOCK } from 'zlib';
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
 		return (
 			<nav>
-				<div className="nav-wrapper">
-					<ul className="hide-on-med-and-down center">
-						<NavCategory />
+				<div className="nav-wrapper row">
+					<ul id="nav-mobile" className="hide-on-med-and-down center">
+							<NavCategory />
 						{/* Redirect to page for user to post item */}
-						<li className="nav-item">
+						<div className="col s2">
+						<li className="nav-item right">
 							<Link to="/user/post" className="nav-link">
 								Post an item
 						</Link>
 						</li>
-						<li>
+						</div>
+						<div className="col s2">
+						<li className="nav-item right">
 							<Link to="#" className="nav-link" onClick={props._logout}>
 								Logout
 						</Link>
 						</li>
+						</div>
 					</ul>
 				</div>
 			</nav >

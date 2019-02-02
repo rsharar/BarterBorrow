@@ -56,25 +56,26 @@ export default class NavCategory extends Component {
     }
     render() {
         return (
-            <div>
-                <div className="row searchBar">
+            <div className="navbox ">
+                <div className="row searchBar col s0.5">
                     <div className="input-field col s6 s12 red-text">
                         <i className="material-icons left">search</i>
                     </div>
                 </div>
-                <div className="s6">
+                <div className="col s2.5">
                     <input 
                     name="searchQuery" 
                     type="text" 
                     value={this.state.searchQuery}
                     onChange={this.handleChange}
+                    style={{ width:'300px' }}
                     placeholder="search" 
                     id="autocomplete-input" className="autocomplete black-text" />
                 </div>
-                <div className="postItemFields">
-                    <label className="formTitle" htmlFor="productCategory">Category: </label>
+                <div className="postItemFields col s2">
+                    {/* <label className="formTitle" htmlFor="productCategory">Category: </label> */}
                     <select name="category" className="formElement"
-                        value={this.state.category} onChange={this.handleChange} style={{ display: 'inline-block' }}>
+                        value={this.state.category} onChange={this.handleChange} style={{ width: '200px', display: 'inline-block'}}>
                         <option value="tools">All</option>
                         <option value="crafts">Crafts</option>
                         <option value="electronics">Electronics</option>
@@ -83,12 +84,13 @@ export default class NavCategory extends Component {
                         <option value="other">Other</option>
                     </select>
                 </div>
+                <div className="col s1">
                 <button id="searchBtn"
                     onClick={this.handleSubmit}
-                    className="btn waves-effect waves-light" type="submit" name="action">Find some items!
+                    className="btn waves-effect waves-light" type="submit" name="action" style={{ width: '150px' }}>Find items!
                 </button>
+                </div>
             </div>
-
         )
     }
 }

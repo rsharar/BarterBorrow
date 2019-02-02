@@ -26,7 +26,6 @@ class PostItemForm extends Component {
 				this.setState({
 					owneruserid: response.data.user._id
                 })
-                console.log(response.data.user._id)
 			} else {
                 console.log("no logged in user")
             }
