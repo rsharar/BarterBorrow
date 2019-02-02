@@ -5,6 +5,7 @@ import './App.css'
 import NavCategory from './components/NavCategory/NavCategory'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm/SignupForm'
+import Sidenav from './components/Sidenav/Sidenav'
 import PostItemForm from './components/PostItem/PostItem'
 import Home from './components/Home/Home'
 
@@ -15,9 +16,7 @@ const DisplayLinks = props => {
 				<div className="nav-wrapper row">
 					<ul id="nav-mobile" className="hide-on-med-and-down center">
 						<NavCategory />
-						{/* Redirect to page for user to post item */}
 						<div className="col s4"></div>
-
 						<div className="col s1">
 							<li className="nav-item right">
 								<Link to="/user/post" className="nav-link">
@@ -42,7 +41,6 @@ const DisplayLinks = props => {
 				<div className="nav-wrapper row">
 					<ul id="nav-mobile" className="hide-on-med-and-down center">
 						<NavCategory />
-						{/* Redirect to page for user to post item */}
 						<div className="col s4"></div>
 						<div className="col s1">
 							<li className="nav-item right">
@@ -73,15 +71,12 @@ class App extends Component {
 			user: null,
 			category: '',
 		}
-		// this.handleSubmit = this.handleSubmit.bind(this)
 		this._logout = this._logout.bind(this)
 		this._login = this._login.bind(this)
 	}
 	componentDidMount() {
 		axios.get('/auth/user').then(response => {
-			// console.log(response.data)
 			if (!!response.data.user) {
-				// console.log('THERE IS A USER')
 				this.setState({
 					loggedIn: true,
 					user: response.data.user
@@ -130,12 +125,8 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				{/* <h1>This is the main App component</h1> */}
-				{/* <Header user={this.state.user} /> */}
-				{/* LINKS to our different 'pages' */}
 				<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
-				{/*  ROUTES */}
-				{/* <Route exact path="/" component={Home} /> */}
+				<Sidenav />
 				<Route exact path="/" render={() => <Home user={this.state.user} />} />
 				<Route
 					exact
@@ -148,7 +139,6 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				<Route exact path="/user/post" component={PostItemForm} />
-				{/* <LoginForm _login={this._login} /> */}
 			</div>
 		)
 	}
