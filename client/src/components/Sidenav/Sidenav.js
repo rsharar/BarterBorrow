@@ -1,5 +1,8 @@
 import React from "react";
+import './style.css'
 import Sidebar from "react-sidebar";
+import { Route, Link } from 'react-router-dom'
+
 
 class Sidenav extends React.Component {
   constructor(props) {
@@ -17,7 +20,23 @@ class Sidenav extends React.Component {
   render() {
     return (
       <Sidebar
-        sidebar={<b>Sidebar content</b>}
+        sidebar={
+          <div id="sidebar-items">
+            <Link to="/users/profile" className="sidebar-link">
+              <h4>Profile</h4>
+            </Link>
+            <Link to="/users/items" className="sidebar-link">
+            <h4>My Items</h4>
+            </Link>
+            <Link to="/users/messages" className="sidebar-link">
+            <h4>Messages/Proposals</h4>
+            </Link>
+            <Link to="/users/post" className="sidebar-link">
+            <h4>Post an Item</h4>
+            </Link>
+          </div>
+
+        }
         open={this.state.sidebarOpen}
         onSetOpen={this.onSetSidebarOpen}
         styles={{ sidebar: { background: "white" } }}
