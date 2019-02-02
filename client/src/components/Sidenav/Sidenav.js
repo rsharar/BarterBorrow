@@ -1,14 +1,14 @@
 import React from "react";
 import './style.css'
 import Sidebar from "react-sidebar";
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 class Sidenav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebarOpen: true
+      sidebarOpen: false
     };
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
@@ -35,11 +35,10 @@ class Sidenav extends React.Component {
             <h4>Post an Item</h4>
             </Link>
           </div>
-
         }
         open={this.state.sidebarOpen}
         onSetOpen={this.onSetSidebarOpen}
-        styles={{ sidebar: { background: "white" } }}
+        styles={{ sidebar: { background: "white", marginTop: "65px" }}}
       >
         <button onClick={() => this.onSetSidebarOpen(true)}>
           Open sidebar

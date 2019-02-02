@@ -12,6 +12,7 @@ import Home from './components/Home/Home'
 const DisplayLinks = props => {
 	if (props.loggedIn) {
 		return (
+			<div>
 			<nav>
 				<div className="nav-wrapper row">
 					<ul id="nav-mobile" className="hide-on-med-and-down center">
@@ -34,9 +35,12 @@ const DisplayLinks = props => {
 					</ul>
 				</div>
 			</nav >
+			<Sidenav />
+			</div>
 		)
 	} else {
 		return (
+			<div>
 			<nav>
 				<div className="nav-wrapper row">
 					<ul id="nav-mobile" className="hide-on-med-and-down center">
@@ -50,15 +54,17 @@ const DisplayLinks = props => {
 							</li>
 						</div>
 						<div className="col s1">
-						<li className="nav-item right">
-							<Link to="/signup" className="nav-link">
-								sign up
+							<li className="nav-item right">
+								<Link to="/signup" className="nav-link">
+									sign up
 						</Link>
-						</li>
+							</li>
 						</div>
 					</ul>
 				</div>
 			</nav>
+			<Sidenav />
+			</div>
 		)
 	}
 }
@@ -126,7 +132,6 @@ class App extends Component {
 		return (
 			<div className="App">
 				<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
-				<Sidenav />
 				<Route exact path="/" render={() => <Home user={this.state.user} />} />
 				<Route
 					exact
