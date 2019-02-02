@@ -15,10 +15,12 @@ const passport = require('./passport')
 const routes = require('./routes')
 const keys = require('./config/keys');
 // const cookieSession = require('cookie-session');
-const app = express()
+const app = module.exports.app = express();
 const PORT = process.env.PORT || 3001
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+var http = require('http')
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);  //pass a http.Server instance
+server.listen(80);  //listen on port 80
 
 // ===== Middleware ====
 app.use(morgan('dev'))
@@ -55,10 +57,10 @@ app.use(passport.session()) // will call the deserializeUser
 
 // ===== testing middleware =====
 app.use(function(req, res, next) {
-	console.log('===== passport user =======')
-	console.log("Session: " + req.session)
-	console.log("User: " + req.user)
-	console.log('===== END =======')
+	// console.log('===== passport user =======')
+	// console.log("Session: " + req.session)
+	// console.log("User: " + req.user)
+	// console.log('===== END =======')
 	next()
 })
 // testing
@@ -95,6 +97,15 @@ app.use(function(err, req, res, next) {
 	console.error(err.stack)
 	res.status(500)
 })
+
+io.on('connection', (socket) => {
+    console.log(socket.id);
+	// console.log("NEW SOCKET CONNECTION")
+    socket.on('SEND_MESSAGE', function(data){
+        // console.log("BACKEND SEND RECEIPT")
+        io.emit('RECEIVE_MESSAGE', data);
+    })
+});
 
 // ==== Starting Server =====
 app.listen(PORT, () => {
