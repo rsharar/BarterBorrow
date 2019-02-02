@@ -2,68 +2,62 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 import './App.css'
+import NavCategory from './components/NavCategory/NavCategory'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignupForm/SignupForm'
 import PostItemForm from './components/PostItem/PostItem'
-// import Header from './components/Header/Header'
 import Home from './components/Home/Home'
-// import { Z_BLOCK } from 'zlib';
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
 		return (
 			<nav>
-				<div className="nav-wrapper">
-					<a href="/" className="brand-logo">BorrowBarter</a>
-					<ul className="hide-on-med-and-down center-align">
-						<li>
-							<div className="row searchBar">
-								<div className="input-field col s6 s12 red-text">
-									<i className="material-icons left">search</i>
-									<input type="text" placeholder="search" id="autocomplete-input" className="autocomplete black-text" />
-								</div>
-							</div>
-						</li>
-
+				<div className="nav-wrapper row">
+					<ul id="nav-mobile" className="hide-on-med-and-down center">
+						<NavCategory />
 						{/* Redirect to page for user to post item */}
-						<li className="nav-item">
-							<Link to="/user/post" className="nav-link">
-								Post an item
+						<div className="col s4"></div>
+
+						<div className="col s1">
+							<li className="nav-item right">
+								<Link to="/user/post" className="nav-link">
+									Post an item
 						</Link>
-						</li>
-						<li>
-							<Link to="#" className="nav-link" onClick={props._logout}>
-								Logout
+							</li>
+						</div>
+						<div className="col s1">
+							<li className="nav-item right">
+								<Link to="#" className="nav-link" onClick={props._logout}>
+									Logout
 						</Link>
-						</li>
+							</li>
+						</div>
 					</ul>
 				</div>
-			</nav>
+			</nav >
 		)
 	} else {
 		return (
 			<nav>
-				<div className="nav-wrapper">
-					<a href="/" className="brand-logo">BorrowBarter</a>
-					<ul className="hide-on-med-and-down center-align">
-						<li>
-							<div className="row searchBar">
-								<div className="input-field col s6 s12 red-text">
-									<i className="material-icons left">search</i>
-									<input type="text" placeholder="search" id="autocomplete-input" className="autocomplete black-text" />
-								</div>
-							</div>
-						</li>
-						<li className="nav-item">
-							<Link to="/login" className="nav-link">
-								login
+				<div className="nav-wrapper row">
+					<ul id="nav-mobile" className="hide-on-med-and-down center">
+						<NavCategory />
+						{/* Redirect to page for user to post item */}
+						<div className="col s4"></div>
+						<div className="col s1">
+							<li className="nav-item right">
+								<Link to="/login" className="nav-link">
+									login
 						</Link>
-						</li>
-						<li className="nav-item">
+							</li>
+						</div>
+						<div className="col s1">
+						<li className="nav-item right">
 							<Link to="/signup" className="nav-link">
 								sign up
 						</Link>
 						</li>
+						</div>
 					</ul>
 				</div>
 			</nav>
@@ -76,8 +70,10 @@ class App extends Component {
 		super()
 		this.state = {
 			loggedIn: false,
-			user: null
+			user: null,
+			category: '',
 		}
+		// this.handleSubmit = this.handleSubmit.bind(this)
 		this._logout = this._logout.bind(this)
 		this._login = this._login.bind(this)
 	}
