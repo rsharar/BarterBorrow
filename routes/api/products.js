@@ -20,4 +20,7 @@ router.route("/categories/:category")
 router.route("/titles/:searchQuery")
     .get(productController.findByTitle);
 
+router.route("/owner/:ownerId")
+    .get(productController.findByOwnerId);
+    
 module.exports = router;

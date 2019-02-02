@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 3001
 var http = require('http')
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);  //pass a http.Server instance
-server.listen(80);  //listen on port 80
+server.listen(PORT + 1);  //listen on port 80
 
 // ===== Middleware ====
 app.use(morgan('dev'))

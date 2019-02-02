@@ -12,11 +12,11 @@ class Chat extends React.Component {
             messages: []
         };
 
-        this.socket = io('localhost:80');
+        this.socket = io('localhost:' + ((process.env.PORT || 3001) + 1));
 
         this.socket.on('RECEIVE_MESSAGE', function (data) {
             // console.log("FRONT END RECEIPT")
-            console.log(data)
+            // console.log(data)
             addMessage(data);
         });
 
@@ -56,6 +56,8 @@ class Chat extends React.Component {
                 console.log("USER NOT LOGGED IN")
             }
         })
+
+        
     }
 
     render() {

@@ -23,6 +23,9 @@ export default {
         let searchQuery = searchObj.searchQuery;
         return axios.get("/api/products/titles/" + searchQuery);
     },
+    getProductsByOwner: function (ownerId) {
+        return axios.get("/api/products/owner/" + ownerId);
+    },
     editProduct: function (id, productData) {
         return axios.put("/api/products/" + id, productData);
     },
@@ -51,5 +54,12 @@ export default {
     // Deletes the proposal with the given id
     deleteProposal: function (id) {
         return axios.delete("/api/proposals/" + id);
+    },
+
+    // ------------------------------
+
+    // Get user by id
+    getUserById: function(id) {
+        return axios.get()
     }
 };
