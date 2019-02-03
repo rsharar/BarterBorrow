@@ -18,12 +18,12 @@ class Sidenav extends React.Component {
   }
 
   render() {
-    const divStyle ={
+    const sidebarStyle={
       root: {
         position: "absolute",
-        top: 0,
+        top: 65,
         left: 0,
-        right: 0,
+        right: "80%",
         bottom: 0,
         overflow: "hidden"
       },
@@ -66,6 +66,11 @@ class Sidenav extends React.Component {
         bottom: 0
       }
     };
+
+    const btnStyle ={
+      marginTop: "65px",
+    }
+
     return (
       <Sidebar
         sidebar={
@@ -86,9 +91,9 @@ class Sidenav extends React.Component {
         }
         open={this.state.sidebarOpen}
         onSetOpen={this.onSetSidebarOpen}
-        style={divStyle}
+        styles={sidebarStyle}
       >
-        <button onClick={() => this.onSetSidebarOpen(true)}>
+        <button style={btnStyle} onClick={() => this.onSetSidebarOpen(true)}>
           Open sidebar
         </button>
       </Sidebar>

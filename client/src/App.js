@@ -13,57 +13,55 @@ const DisplayLinks = props => {
 	if (props.loggedIn) {
 		return (
 			<div>
-			<nav>
-				<div className="nav-wrapper row">
-					<ul id="nav-mobile" className="hide-on-med-and-down center">
-						<NavCategory />
-						<div className="col s4"></div>
-						<div className="col s1">
-							<li className="nav-item right">
-								<Link to="/user/post" className="nav-link">
-									Post an item
+				<nav>
+					<div className="nav-wrapper row">
+						<ul id="nav-mobile" className="hide-on-med-and-down center">
+							<NavCategory />
+							<div className="col s4"></div>
+							<div className="col s1">
+								<li className="nav-item right">
+									<Link to="/user/post" className="nav-link">
+										Post an item
 						</Link>
-							</li>
-						</div>
-						<div className="col s1">
-							<li className="nav-item right">
-								<Link to="#" className="nav-link" onClick={props._logout}>
-									Logout
+								</li>
+							</div>
+							<div className="col s1">
+								<li className="nav-item right">
+									<Link to="#" className="nav-link" onClick={props._logout}>
+										Logout
 						</Link>
-							</li>
-						</div>
-					</ul>
-				</div>
-			</nav >
-			<Sidenav />
+								</li>
+							</div>
+						</ul>
+					</div>
+				</nav >
 			</div>
 		)
 	} else {
 		return (
 			<div>
-			<nav>
-				<div className="nav-wrapper row">
-					<ul id="nav-mobile" className="hide-on-med-and-down center">
-						<NavCategory />
-						<div className="col s4"></div>
-						<div className="col s1">
-							<li className="nav-item right">
-								<Link to="/login" className="nav-link">
-									login
+				<nav>
+					<div className="nav-wrapper row">
+						<ul id="nav-mobile" className="hide-on-med-and-down center">
+							<NavCategory />
+							<div className="col s4"></div>
+							<div className="col s1">
+								<li className="nav-item right">
+									<Link to="/login" className="nav-link">
+										login
 						</Link>
-							</li>
-						</div>
-						<div className="col s1">
-							<li className="nav-item right">
-								<Link to="/signup" className="nav-link">
-									sign up
+								</li>
+							</div>
+							<div className="col s1">
+								<li className="nav-item right">
+									<Link to="/signup" className="nav-link">
+										sign up
 						</Link>
-							</li>
-						</div>
-					</ul>
-				</div>
-			</nav>
-			<Sidenav />
+								</li>
+							</div>
+						</ul>
+					</div>
+				</nav>
 			</div>
 		)
 	}
@@ -131,6 +129,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
+				<Sidenav />
 				<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
 				<Route exact path="/" render={() => <Home user={this.state.user} />} />
 				<Route
