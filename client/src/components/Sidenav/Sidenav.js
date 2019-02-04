@@ -28,6 +28,7 @@ class Sidenav extends React.Component {
         overflow: "hidden"
       },
       sidebar: {
+        backgroundColor: "white",
         zIndex: 2,
         position: "absolute",
         top: 0,
@@ -82,7 +83,7 @@ class Sidenav extends React.Component {
             <h4>My Items</h4>
             </Link>
             <Link to="/users/messages" className="sidebar-link">
-            <h4>Messages/Proposals</h4>
+            <h4>Proposals</h4>
             </Link>
             <Link to="/users/post" className="sidebar-link">
             <h4>Post an Item</h4>

@@ -20,7 +20,7 @@ const DisplayLinks = props => {
 							<div className="col s4"></div>
 							<div className="col s1">
 								<li className="nav-item right">
-									<Link to="/user/post" className="nav-link">
+									<Link to="/users/post" className="nav-link">
 										Post an item
 						</Link>
 								</li>
@@ -142,7 +142,7 @@ class App extends Component {
 						/>}
 				/>
 				<Route exact path="/signup" component={SignupForm} />
-				<Route exact path="/user/post" component={PostItemForm} />
+				<Route exact path="/users/post" component={PostItemForm} />
 			</div>
 		)
 	}
