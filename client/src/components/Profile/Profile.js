@@ -51,11 +51,9 @@ export default class Profile extends Component {
         event.preventDefault()
         if (this.state.password === this.state.firstpassword) {
             API.updateUserProfile({
-                id: this.state._id,
-                userData: {
+                    id: this.state._id,
                     username: this.state.username,
                     password: this.state.password
-                }
             })
                 .then(response => {
                     console.log(response)
