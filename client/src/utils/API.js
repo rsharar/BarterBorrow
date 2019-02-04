@@ -28,5 +28,13 @@ export default {
     // Deletes the product with the given id
     deleteProduct: function (id) {
         return axios.delete("/api/products/" + id);
+    },
+    // Updates a user's profile info
+    findUserById: function (id){
+        return axios.get("/users/profile/" + id)
+    },
+    // Updates a user's profile info
+    updateUserProfile: function (id,userData){
+        return axios.put("/users/profile/" + id, userData)
     }
 };

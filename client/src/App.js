@@ -8,6 +8,7 @@ import SignupForm from './components/SignupForm/SignupForm'
 import Sidenav from './components/Sidenav/Sidenav'
 import PostItemForm from './components/PostItem/PostItem'
 import Home from './components/Home/Home'
+import Profile from './components/Profile/Profile';
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
@@ -143,6 +144,7 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				<Route exact path="/users/post" component={PostItemForm} />
+				<Route exact path="/users/profile" component={Profile} />
 			</div>
 		)
 	}
