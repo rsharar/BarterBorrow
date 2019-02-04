@@ -61,6 +61,7 @@ class PostItemForm extends Component {
                     console.log("POST ITEM ERROR: ", err)
                 });
         }
+        window.location.reload();
     }
     render() {
         return (
