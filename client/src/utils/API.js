@@ -31,7 +31,6 @@ export default {
     },
     // Updates a user's profile info
     updateUserProfile: function (userData){
-        console.log(userData.id)
         let id = userData.id
         return axios.put("/api/users/profile/" + id, userData)
     }

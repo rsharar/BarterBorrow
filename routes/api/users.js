@@ -5,5 +5,4 @@ const userController = require("../../controllers/userController");
 router.route("/profile/:id")
     .put(userController.updateUserProfile)
 
-
 module.exports = router;
