@@ -6,7 +6,7 @@ export default class Profile extends Component {
     constructor() {
         super()
         this.state = {
-            owneruserid:'',
+            _id:'',
             firstName: '',
             username:'',
             password:'',
@@ -22,13 +22,13 @@ export default class Profile extends Component {
             console.log(userInfo.local.username)
 			if (userInfo.local.username) {
 				this.setState({
-                    owneruserid: userInfo._id,
+                    _id: userInfo._id,
                     firstName: userInfo.firstName,
                     username: userInfo.local.username,
                 })
 			} else if (userInfo.firstName){
                 this.setState({
-                    owneruserid: userInfo._id,
+                    _id: userInfo._id,
                     firstName: userInfo.firstName,
                     username: userInfo.local.username,
                 })
@@ -51,9 +51,7 @@ export default class Profile extends Component {
         event.preventDefault()
         if (this.state.password === this.state.firstpassword) {
             API.updateUserProfile({
-                id: {
-                    _id: this.state.owneruserid
-                },
+                id: this.state._id,
                 userData: {
                     username: this.state.username,
                     password: this.state.password

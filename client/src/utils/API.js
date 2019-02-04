@@ -30,11 +30,9 @@ export default {
         return axios.delete("/api/products/" + id);
     },
     // Updates a user's profile info
-    findUserById: function (id){
-        return axios.get("/users/profile/" + id)
-    },
-    // Updates a user's profile info
-    updateUserProfile: function (id,userData){
-        return axios.put("/users/profile/" + id, userData)
+    updateUserProfile: function (userData){
+        console.log(userData.id)
+        let id = userData.id
+        return axios.put("/api/users/profile/" + id, userData)
     }
 };
