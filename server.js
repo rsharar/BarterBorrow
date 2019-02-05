@@ -39,11 +39,11 @@ app.use(
 	})
 )
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	next();
-  });
+});
 
 // ===== Passport ====
 app.use(passport.initialize())
@@ -56,7 +56,7 @@ app.use(passport.session()) // will call the deserializeUser
 // }));
 
 // ===== testing middleware =====
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
 	// console.log('===== passport user =======')
 	// console.log("Session: " + req.session)
 	// console.log("User: " + req.user)
@@ -92,19 +92,37 @@ app.use('/auth', require('./auth'))
 app.use(routes)
 
 // ====== Error handler ====
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
 	console.log('====== ERROR =======')
 	console.error(err.stack)
 	res.status(500)
 })
 
-io.on('connection', (socket) => {
-    console.log(socket.id);
-	// console.log("NEW SOCKET CONNECTION")
-    socket.on('SEND_MESSAGE', function(data){
-        // console.log("BACKEND SEND RECEIPT")
-        io.emit('RECEIVE_MESSAGE', data);
-    })
+// io.on('connection', (socket) => {
+//     console.log(socket.id);
+// 	// console.log("NEW SOCKET CONNECTION")
+//     socket.on('SEND_MESSAGE', function(data){
+//         // console.log("BACKEND SEND RECEIPT")
+//         io.emit('RECEIVE_MESSAGE', data);
+//     })
+// });
+
+io.on('connection', function (socket) {
+
+	var room = socket.handshake['query']['r_var'];
+
+	socket.join(room);
+	console.log('user joined room #' + room);
+
+	socket.on('disconnect', function () {
+		socket.leave(room)
+		console.log('user disconnected');
+	});
+
+	socket.on('SEND_MESSAGE', function (msg) {
+		io.to(room).emit('RECEIVE_MESSAGE', msg);
+	});
+
 });
 
 // ==== Starting Server =====

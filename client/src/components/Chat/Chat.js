@@ -14,6 +14,17 @@ class Chat extends React.Component {
 
         this.socket = io('localhost:' + ((process.env.PORT || 3001) + 1));
 
+        var socket_connect = function (room) {
+            return io('localhost:3000', {
+                query: 'r_var='+room
+            });
+        }
+        
+        var random_room = Math.floor((Math.random() * 2) + 1);
+        var socket      = socket_connect(random_room);
+        
+        socket.emit('chat message', 'hello room #'+random_room);
+
         this.socket.on('RECEIVE_MESSAGE', function (data) {
             // console.log("FRONT END RECEIPT")
             // console.log(data)
@@ -79,8 +90,8 @@ class Chat extends React.Component {
 
                             </div>
                             <div className="card-footer">
-                                <input type="text" placeholder="Username" value={this.state.username} className="form-control" />
-                                <br />
+                                {/* <input type="text" placeholder="Username" value={this.state.username} className="form-control" />
+                                <br /> */}
                                 <input type="text" placeholder="Message" className="form-control" value={this.state.message} onChange={ev => this.setState({ message: ev.target.value })} />
                                 <br />
                                 <button onClick={this.sendMessage} className="btn btn-primary form-control">Send</button>
