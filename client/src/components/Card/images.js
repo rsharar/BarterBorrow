@@ -14,7 +14,8 @@ export default class Images extends Component {
         this.state = {
             owneruserid: '',
             usersItemsFlag: false,
-            images: []
+            userimages: [],
+            allimages: []
         };
     }
     componentDidMount() {
@@ -22,14 +23,16 @@ export default class Images extends Component {
             if (!!response.data.user) {
                 this.setState({
                     owneruserid: response.data.user._id,
-                    usersItemsFlag: true
                 })
                 API.getProductsByUserId({
                     owneruserid: this.state.owneruserid
                 })
                 .then(response => {
                     console.log(response.data)
-                    this.setState(() => ({ images: response.data }));
+                    this.setState(() => ({ 
+                        userimages: response.data,
+                        usersItemsFlag: false
+                    }));
                 })
             } else {
                 API.getAllProducts()
@@ -45,18 +48,18 @@ export default class Images extends Component {
     }
 
     render() {
-        if (this.state.usersItemsFlag){
+        if (this.state.userimages){
             return (
                 <div>
                     <h2>My Items</h2>
-                    <ImageList images={this.state.images} />
+                    <ImageList images={this.state.userimages} />
                 </div>
             )
         }
         else {
         return (
             <div>
-                <ImageList images={this.state.images} />
+                <ImageList images={this.state.allimages} />
             </div>
         );
         }
