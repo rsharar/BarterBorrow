@@ -8,6 +8,8 @@ import SignupForm from './components/SignupForm/SignupForm'
 import Sidenav from './components/Sidenav/Sidenav'
 import PostItemForm from './components/PostItem/PostItem'
 import Home from './components/Home/Home'
+import Footer from './components/Footer/footer';
+import Images from './components/Card/images'
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
@@ -17,12 +19,19 @@ const DisplayLinks = props => {
 					<div className="nav-wrapper row">
 						<ul id="nav-mobile" className="hide-on-med-and-down center">
 							<NavCategory />
-							<div className="col s4"></div>
-							<div className="col s1">
+							{/* <div className="col s4"></div> */}
+							<div className="col s2">
 								<li className="nav-item right">
 									<Link to="/users/post" className="nav-link">
 										Post an item
-						</Link>
+									</Link>
+								</li>
+							</div>
+							<div className="col s2">
+								<li className="nav-item right">
+									<Link to="/browse" className="nav-link">
+										Browse
+									</Link>
 								</li>
 							</div>
 							<div className="col s1">
@@ -44,7 +53,14 @@ const DisplayLinks = props => {
 					<div className="nav-wrapper row">
 						<ul id="nav-mobile" className="hide-on-med-and-down center">
 							<NavCategory />
-							<div className="col s4"></div>
+							{/* <div className="col s4"></div> */}
+							<div className="col s2">
+								<li className="nav-item right">
+									<Link to="/browse" className="nav-link">
+										Browse
+									</Link>
+								</li>
+							</div>
 							<div className="col s1">
 								<li className="nav-item right">
 									<Link to="/login" className="nav-link">
@@ -52,7 +68,7 @@ const DisplayLinks = props => {
 						</Link>
 								</li>
 							</div>
-							<div className="col s1">
+							<div className="col s2">
 								<li className="nav-item right">
 									<Link to="/signup" className="nav-link">
 										sign up
@@ -143,6 +159,8 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				<Route exact path="/users/post" component={PostItemForm} />
+				<Route exact path="/browse" component={Images} />
+				<Footer />
 			</div>
 		)
 	}

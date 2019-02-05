@@ -1,0 +1,28 @@
+#back {
+    width: 100%
+}
+
+nav .nav-wrapper {
+    background-color: black;
+}
+
+/* @media (-webkit-min-device-pixel-ratio: 1.5) and (min-width: 480px), not all, (min-resolution: 1.5dppx) and (min-width: 480px) {
+.interstitial--wiggle {
+    width: 100%;
+    background-image: url(https://hawkins-staging.herokuapp.com/public/img/home/wiggle_full@2x.png);
+}
+} */
+
+.btn, .btn-large, .btn-small {
+    background-color: darkgrey;
+    color: black
+}
+
+select {
+    background-color: darkgrey;
+}
+
+.btn:hover, .btn-large:hover, .btn-small:hover {
+    background-color: aliceblue;
+}
+
