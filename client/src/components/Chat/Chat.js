@@ -12,10 +12,10 @@ class Chat extends React.Component {
             messages: []
         };
 
-        this.socket = io('localhost:' + ((process.env.PORT || 3001) + 1));
+        // this.socket = io('localhost:' + ((process.env.PORT || 3001) + 1));
 
         var socket_connect = function (room) {
-            return io('localhost:3000', {
+            return io('localhost:' + ((process.env.PORT || 3001) + 1), {
                 query: 'r_var='+room
             });
         }
@@ -23,7 +23,7 @@ class Chat extends React.Component {
         var random_room = Math.floor((Math.random() * 2) + 1);
         var socket      = socket_connect(random_room);
         
-        socket.emit('chat message', 'hello room #'+random_room);
+        socket.emit('SEND_MESSAGE', 'hello room #'+random_room);
 
         this.socket.on('RECEIVE_MESSAGE', function (data) {
             // console.log("FRONT END RECEIPT")

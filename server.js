@@ -112,7 +112,9 @@ io.on('connection', function (socket) {
 	var room = socket.handshake['query']['r_var'];
 
 	socket.join(room);
+	console.log('**************************');
 	console.log('user joined room #' + room);
+	console.log('**************************');
 
 	socket.on('disconnect', function () {
 		socket.leave(room)
