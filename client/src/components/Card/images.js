@@ -13,6 +13,7 @@ export default class Images extends Component {
         super();
         this.state = {
             owneruserid: '',
+            usersItemsFlag: false,
             images: []
         };
     }
@@ -20,7 +21,8 @@ export default class Images extends Component {
         axios.get('/auth/user').then(response => {
             if (!!response.data.user) {
                 this.setState({
-                    owneruserid: response.data.user._id
+                    owneruserid: response.data.user._id,
+                    usersItemsFlag: true
                 })
                 API.getProductsByUserId({
                     owneruserid: this.state.owneruserid
@@ -43,10 +45,20 @@ export default class Images extends Component {
     }
 
     render() {
+        if (this.state.usersItemsFlag){
+            return (
+                <div>
+                    <h2>My Items</h2>
+                    <ImageList images={this.state.images} />
+                </div>
+            )
+        }
+        else {
         return (
             <div>
                 <ImageList images={this.state.images} />
             </div>
         );
+        }
     }
 }
