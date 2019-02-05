@@ -67,7 +67,7 @@ export default class Profile extends Component {
             alert("Passwords do not match!")
         }
         alert("Profile updated!")
-        // window.location.reload();
+        window.location.reload();
     }
   render() {
     return (

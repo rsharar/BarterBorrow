@@ -24,7 +24,10 @@ class SignupForm extends Component {
 	}
 	handleSubmit(event) {
 		event.preventDefault()
-		// TODO - validate!
+		if (this.state.password.length < 8){
+			alert("Password must be at least 8 characters.")
+		}
+		else{
 		axios
 			.post('/auth/signup', {
 				username: this.state.username,
@@ -45,6 +48,7 @@ class SignupForm extends Component {
 				console.log("GOOGLE OAUTH ERROR: ", err)
 			})
 	}
+}
 	render() {
 		if (this.state.redirectTo) {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
