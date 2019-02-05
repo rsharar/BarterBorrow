@@ -160,6 +160,7 @@ class App extends Component {
 				<Route exact path="/signup" component={SignupForm} />
 				<Route exact path="/users/post" component={PostItemForm} />
 				<Route exact path="/browse" component={Images} />
+				<Route exact path="/users/items" component={Images} />
 				<Footer />
 			</div>
 		)
