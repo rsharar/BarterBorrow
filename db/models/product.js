@@ -9,7 +9,7 @@ const productSchema = new Schema({
     title: { type: String, unique: false, required: true },
 	owneruserid: { type: String, unique: false, required: true },
 	description: { type: String, unique: false, required: true },
-    imageurl: { type: String, unique: true, required: true },
+    imageurl: { type: String, unique: false, required: true },
     category: { type: String, unique: false, required: false },
     location: { type: String, unique: false, required: true },
     status: { type: String, unique: false, required: true },
