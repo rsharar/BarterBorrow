@@ -10,7 +10,7 @@ import PostItemForm from './components/PostItem/PostItem'
 import Home from './components/Home/Home'
 import Footer from './components/Footer/footer';
 import AllImages from './components/Card/images'
-import UserImages from './components/UserCard/images'
+import UserImages from './components/UserCard/userimages'
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {

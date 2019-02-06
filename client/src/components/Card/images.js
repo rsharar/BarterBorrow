@@ -28,6 +28,7 @@ export default class Images extends Component {
     render() {
         return (
             <div>
+                <h2>All Available Items</h2>
                 <ImageList images={this.state.allimages} />
             </div>
         );
