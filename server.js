@@ -98,34 +98,34 @@ app.use(function (err, req, res, next) {
 	res.status(500)
 })
 
-// io.on('connection', (socket) => {
-//     console.log(socket.id);
-// 	// console.log("NEW SOCKET CONNECTION")
-//     socket.on('SEND_MESSAGE', function(data){
-//         // console.log("BACKEND SEND RECEIPT")
-//         io.emit('RECEIVE_MESSAGE', data);
-//     })
-// });
-
-io.on('connection', function (socket) {
-
-	var room = socket.handshake['query']['r_var'];
-
-	socket.join(room);
-	console.log('**************************');
-	console.log('user joined room #' + room);
-	console.log('**************************');
-
-	socket.on('disconnect', function () {
-		socket.leave(room)
-		console.log('user disconnected');
-	});
-
-	socket.on('SEND_MESSAGE', function (msg) {
-		io.to(room).emit('RECEIVE_MESSAGE', msg);
-	});
-
+io.on('connection', (socket) => {
+    console.log(socket.id);
+	// console.log("NEW SOCKET CONNECTION")
+    socket.on('SEND_MESSAGE', function(data){
+        // console.log("BACKEND SEND RECEIPT")
+        io.emit('RECEIVE_MESSAGE', data);
+    })
 });
+
+// io.on('connection', function (socket) {
+
+// 	var room = socket.handshake['query']['r_var'];
+
+// 	socket.join(room);
+// 	console.log('**************************');
+// 	console.log('user joined room #' + room);
+// 	console.log('**************************');
+
+// 	socket.on('disconnect', function () {
+// 		socket.leave(room)
+// 		console.log('user disconnected');
+// 	});
+
+// 	socket.on('SEND_MESSAGE', function (msg) {
+// 		io.to(room).emit('RECEIVE_MESSAGE', msg);
+// 	});
+
+// });
 
 // ==== Starting Server =====
 app.listen(PORT, () => {
