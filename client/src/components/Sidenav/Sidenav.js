@@ -2,13 +2,15 @@ import React from "react";
 import './style.css'
 import Sidebar from "react-sidebar";
 import { Link } from 'react-router-dom'
+import axios from 'axios';
 
 
 class Sidenav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebarOpen: false
+      sidebarOpen: false,
+      loggedIn: false
     };
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
@@ -17,8 +19,23 @@ class Sidenav extends React.Component {
     this.setState({ sidebarOpen: open });
   }
 
+  componentDidMount() {
+    axios.get('/auth/user').then(response => {
+      if (response.data.user) {
+        this.setState({
+          loggedIn: true,
+        })
+      }
+      else {
+        this.setState({
+          loggedIn: false,
+        })
+      }
+    })
+  }
+
   render() {
-    const sidebarStyle={
+    const sidebarStyle = {
       root: {
         position: "absolute",
         top: 65,
@@ -68,37 +85,41 @@ class Sidenav extends React.Component {
       }
     };
 
-    const btnStyle ={
+    const btnStyle = {
       marginTop: "65px",
     }
-
-    return (
-      <Sidebar
-        sidebar={
-          <div id="sidebar-items">
-            <Link to="/users/profile" className="sidebar-link" onClick={() => this.onSetSidebarOpen(false)}>
-              <h4>Profile</h4>
-            </Link>
-            <Link to="/users/items" className="sidebar-link" onClick={() => this.onSetSidebarOpen(false)}>
-            <h4>My Items</h4>
-            </Link>
-            <Link to="/users/messages" className="sidebar-link" onClick={() => this.onSetSidebarOpen(false)}>
-            <h4>Proposals</h4>
-            </Link>
-            <Link to="/users/post" className="sidebar-link" onClick={() => this.onSetSidebarOpen(false)}>
-            <h4>Post an Item</h4>
-            </Link>
-          </div>
-        }
-        open={this.state.sidebarOpen}
-        onSetOpen={this.onSetSidebarOpen}
-        styles={sidebarStyle}
-      >
-        <button style={btnStyle} onClick={() => this.onSetSidebarOpen(true)}>
-          Open sidebar
+    if (this.state.loggedIn) {
+      return (
+        <Sidebar
+          sidebar={
+            <div id="sidebar-items">
+              <Link to="/users/profile" className="sidebar-link" onClick={() => this.onSetSidebarOpen(false)}>
+                <h4>Profile</h4>
+              </Link>
+              <Link to="/users/items" className="sidebar-link" onClick={() => this.onSetSidebarOpen(false)}>
+                <h4>My Items</h4>
+              </Link>
+              <Link to="/users/messages" className="sidebar-link" onClick={() => this.onSetSidebarOpen(false)}>
+                <h4>Proposals</h4>
+              </Link>
+              <Link to="/users/post" className="sidebar-link" onClick={() => this.onSetSidebarOpen(false)}>
+                <h4>Post an Item</h4>
+              </Link>
+            </div>
+          }
+          open={this.state.sidebarOpen}
+          onSetOpen={this.onSetSidebarOpen}
+          styles={sidebarStyle}
+        >
+          <button style={btnStyle} onClick={() => this.onSetSidebarOpen(true)}>
+            Open sidebar
         </button>
-      </Sidebar>
-    );
+        </Sidebar>
+      )
+    }
+    else {
+      return null;
+    }
   }
 }
 

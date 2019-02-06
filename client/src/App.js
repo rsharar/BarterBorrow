@@ -9,7 +9,8 @@ import Sidenav from './components/Sidenav/Sidenav'
 import PostItemForm from './components/PostItem/PostItem'
 import Home from './components/Home/Home'
 import Footer from './components/Footer/footer';
-import Images from './components/Card/images'
+import AllImages from './components/Card/images'
+import UserImages from './components/UserCard/userimages'
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
@@ -19,15 +20,15 @@ const DisplayLinks = props => {
 					<div className="nav-wrapper row">
 						<ul id="nav-mobile" className="hide-on-med-and-down center">
 							<NavCategory />
-							{/* <div className="col s4"></div> */}
-							<div className="col s2">
+							<div className="col s2"></div>
+							<div className="col s1">
 								<li className="nav-item right">
 									<Link to="/users/post" className="nav-link">
 										Post an item
 									</Link>
 								</li>
 							</div>
-							<div className="col s2">
+							<div className="col s1">
 								<li className="nav-item right">
 									<Link to="/browse" className="nav-link">
 										Browse
@@ -53,8 +54,8 @@ const DisplayLinks = props => {
 					<div className="nav-wrapper row">
 						<ul id="nav-mobile" className="hide-on-med-and-down center">
 							<NavCategory />
-							{/* <div className="col s4"></div> */}
-							<div className="col s2">
+							<div className="col s2"></div>
+							<div className="col s1">
 								<li className="nav-item right">
 									<Link to="/browse" className="nav-link">
 										Browse
@@ -68,7 +69,7 @@ const DisplayLinks = props => {
 						</Link>
 								</li>
 							</div>
-							<div className="col s2">
+							<div className="col s1">
 								<li className="nav-item right">
 									<Link to="/signup" className="nav-link">
 										sign up
@@ -159,8 +160,8 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				<Route exact path="/users/post" component={PostItemForm} />
-				<Route exact path="/browse" component={Images} />
-				<Route exact path="/users/items" component={Images} />
+				<Route exact path="/browse" component={AllImages} />
+				<Route exact path="/users/items" component={UserImages} />
 				<Footer />
 			</div>
 		)
