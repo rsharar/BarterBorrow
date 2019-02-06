@@ -62,6 +62,7 @@ class PostItemForm extends Component {
                     console.log("POST ITEM ERROR: ", err)
                 });
         }
+        window.location.reload();
     }
     render() {
         return (
@@ -136,7 +137,6 @@ class PostItemForm extends Component {
                 <button id="postFormBtn" onClick={this.handleSubmit} className="btn waves-effect waves-light" type="submit" name="action">Post my Item!
     <i className="material-icons right">send</i>
                 </button>
-                {/* <Chat /> */}
             </div>
         )
     }

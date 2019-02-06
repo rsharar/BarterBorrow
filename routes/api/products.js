@@ -20,7 +20,8 @@ router.route("/categories/:category")
 router.route("/titles/:searchQuery")
     .get(productController.findByTitle);
 
-router.route("/owner/:ownerId")
-    .get(productController.findByOwnerId);
-    
+// Matches with "/api/products/users/:owneruserid"
+router.route("/users/:owneruserid")
+    .get(productController.findByUserId);
+
 module.exports = router;

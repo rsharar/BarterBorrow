@@ -22,10 +22,11 @@ module.exports = {
             .then(dbProduct => res.json(dbProduct))
             .catch(err => res.status(422).json(err));
     },
-    findByOwnerId: function (req, res) {
-        db.Product.find({ owneruserid: req.params.ownerId })
-        .then(dbProduct => res.json(dbProduct))
-        .catch(err => res.json(422).json(err))
+    findByUserId: function (req, res){
+        console.log('here')
+        db.Product.find({owneruserid: req.params.owneruserid})
+            .then(dbProduct => res.json(dbProduct))
+            .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
         db.Product.create(req.body)

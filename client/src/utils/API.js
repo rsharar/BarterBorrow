@@ -9,17 +9,23 @@ export default {
     getOneProduct: function (id) {
         return axios.get("/api/products/" + id);
     },
+    // Gets all products associated with a user
+    getProductsByUserId: function (userId) {
+        let owneruserid = userId.owneruserid
+        console.log(owneruserid)
+        return axios.get("/api/products/users/" + owneruserid)
+    },
     // Posts a product to the database
     postProduct: function (productData) {
         return axios.post("/api/products", productData);
     },
     // Gets products by category name
-    getProductsByCategory: function(categoryObj) {
+    getProductsByCategory: function (categoryObj) {
         let category = categoryObj.category;
         return axios.get("/api/products/categories/" + category);
     },
     // Gets products by searching for title
-    getProductsBySearch: function(searchObj) {
+    getProductsBySearch: function (searchObj) {
         let searchQuery = searchObj.searchQuery;
         return axios.get("/api/products/titles/" + searchQuery);
     },
