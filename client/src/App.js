@@ -19,15 +19,15 @@ const DisplayLinks = props => {
 					<div className="nav-wrapper row">
 						<ul id="nav-mobile" className="hide-on-med-and-down center">
 							<NavCategory />
-							{/* <div className="col s4"></div> */}
-							<div className="col s2">
+							<div className="col s2"></div>
+							<div className="col s1">
 								<li className="nav-item right">
 									<Link to="/users/post" className="nav-link">
 										Post an item
 									</Link>
 								</li>
 							</div>
-							<div className="col s2">
+							<div className="col s1">
 								<li className="nav-item right">
 									<Link to="/browse" className="nav-link">
 										Browse
@@ -53,8 +53,8 @@ const DisplayLinks = props => {
 					<div className="nav-wrapper row">
 						<ul id="nav-mobile" className="hide-on-med-and-down center">
 							<NavCategory />
-							{/* <div className="col s4"></div> */}
-							<div className="col s2">
+							<div className="col s2"></div>
+							<div className="col s1">
 								<li className="nav-item right">
 									<Link to="/browse" className="nav-link">
 										Browse
@@ -68,7 +68,7 @@ const DisplayLinks = props => {
 						</Link>
 								</li>
 							</div>
-							<div className="col s2">
+							<div className="col s1">
 								<li className="nav-item right">
 									<Link to="/signup" className="nav-link">
 										sign up

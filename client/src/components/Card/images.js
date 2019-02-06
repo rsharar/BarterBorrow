@@ -4,10 +4,6 @@ import './style.css';
 import API from '../../utils/API';
 import axios from 'axios'
 
-
-
-
-
 export default class Images extends Component {
     constructor() {
         super();
@@ -38,7 +34,7 @@ export default class Images extends Component {
                 API.getAllProducts()
                     .then(response => {
                         console.log(response.data)
-                        this.setState(() => ({ images: response.data }));
+                        this.setState(() => ({ allimages: response.data }));
                     })
                     .catch(err => {
                         console.log("POST ITEM ERROR: ", err)
@@ -48,7 +44,7 @@ export default class Images extends Component {
     }
 
     render() {
-        if (this.state.userimages){
+        if (this.state.owneruserid){
             return (
                 <div>
                     <h2>My Items</h2>
