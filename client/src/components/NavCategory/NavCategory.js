@@ -52,6 +52,8 @@ export default class NavCategory extends Component {
                 });
         }
     }
+
+    
     render() {
         return (
             <div>

@@ -9,7 +9,8 @@ import Sidenav from './components/Sidenav/Sidenav'
 import PostItemForm from './components/PostItem/PostItem'
 import Home from './components/Home/Home'
 import Footer from './components/Footer/footer';
-import Images from './components/Card/images'
+import AllImages from './components/Card/images'
+import UserImages from './components/UserCard/images'
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
@@ -159,8 +160,8 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				<Route exact path="/users/post" component={PostItemForm} />
-				<Route exact path="/browse" component={Images} />
-				<Route exact path="/users/items" component={Images} />
+				<Route exact path="/browse" component={AllImages} />
+				<Route exact path="/users/items" component={UserImages} />
 				<Footer />
 			</div>
 		)

@@ -9,55 +9,27 @@ export default class Images extends Component {
         super();
         this.state = {
             owneruserid: '',
-            usersItemsFlag: false,
-            userimages: [],
             allimages: []
         };
     }
     componentDidMount() {
         axios.get('/auth/user').then(response => {
-            if (!!response.data.user) {
-                this.setState({
-                    owneruserid: response.data.user._id,
-                })
-                API.getProductsByUserId({
-                    owneruserid: this.state.owneruserid
-                })
+            API.getAllProducts()
                 .then(response => {
                     console.log(response.data)
-                    this.setState(() => ({ 
-                        userimages: response.data,
-                        usersItemsFlag: false
-                    }));
+                    this.setState(() => ({ allimages: response.data }));
                 })
-            } else {
-                API.getAllProducts()
-                    .then(response => {
-                        console.log(response.data)
-                        this.setState(() => ({ allimages: response.data }));
-                    })
-                    .catch(err => {
-                        console.log("POST ITEM ERROR: ", err)
-                    });
-            }
+                .catch(err => {
+                    console.log("POST ITEM ERROR: ", err)
+                });
         })
     }
 
     render() {
-        if (this.state.owneruserid){
-            return (
-                <div>
-                    <h2>My Items</h2>
-                    <ImageList images={this.state.userimages} />
-                </div>
-            )
-        }
-        else {
         return (
             <div>
                 <ImageList images={this.state.allimages} />
             </div>
         );
-        }
     }
 }
