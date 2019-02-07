@@ -11,10 +11,12 @@ module.exports = {
             .then(dbProposal => res.json(dbProposal))
             .catch(err => res.status(422).json(err));
     },
-    create: function (req, res) {
-        db.Proposal.create(req.body)
-            .then(dbProposal => res.json(dbProposal))
-            .catch(err => res.status(422).json(err));
+    create: function (req) {
+        return db.Proposal.create(req)
+            .then(dbProposal => {
+                return dbProposal
+            })
+            .catch(err => console.log(err));
     },
     update: function (req, res) {
         db.Proposal.findByIdAndUpdate({ id: req.params.id }, req.body)
