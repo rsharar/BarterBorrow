@@ -5,8 +5,9 @@
     width: 300px;
 }
 
-.card.card-image {
-    height: 450px;
+.card .card-image img {
+    height: 233.5px;
+    width: 250px;
 }
 
 .card-content {
@@ -19,6 +20,7 @@
     margin-left: auto;
     margin-right: auto;
 }
+
 .header {
     height: 100px;
 }
@@ -47,4 +49,8 @@ img.card-img-top {
     padding-left: 0px;
     padding-right: 0px;
     margin-top: 100px;
+}
+
+.card .card-title {
+    font-size: 19px;
 }
