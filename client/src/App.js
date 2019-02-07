@@ -163,7 +163,7 @@ class App extends Component {
 				<Route exact path="/users/post" component={PostItemForm} />
 				<Route exact path="/browse" component={AllImages} />
 				<Route exact path="/users/items" component={UserImages} />
-				<Route path='/route/:id' exact component={OneItem} />
+				<Route path='/items/:id' exact component={OneItem} />
 				<Footer />
 			</div>
 		)

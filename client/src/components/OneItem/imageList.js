@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImageCard from './imageCard';
 
-const getimages = (images) => {
+const getimages = (image) => {
     return (
         <div className="row">
             {
-                images.map(image => <ImageCard key={image._id} image={image} />)
+                <ImageCard key={image._id} image={image} />
             }
         </div>
     );

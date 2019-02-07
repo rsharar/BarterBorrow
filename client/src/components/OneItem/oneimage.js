@@ -1,34 +1,41 @@
 import React, { Component } from 'react';
 import ImageList from './imageList';
 import './style.css';
-// import API from '../../utils/API';
+import API from '../../utils/API';
 import axios from 'axios'
 
 export default class OneItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            loggedInUserId: '',
             productId: '',
             productImage: [],
         };
-        // const id = this.props.match.params.id
+        const id = this.props.match.params.id
+        console.log("ProductId: " + id);
     }
-    componentDidMount(props) {
-        console.log(props);
+
+    componentDidMount() {
         axios.get('/auth/user').then(response => {
             if (!!response.data.user) {
+                console.log(this.props.match.params.id)
                 this.setState({
-                    productId: response.data.user._id,
+                    loggedInUserId: response.data.user._id,
+                    productId: this.props.match.params.id
                 })
-                // API.getOneProduct({
-                //     _id: props._id
-                // })
-                    // .then(response => {
-                    //     console.log(response.data)
-                    //     this.setState(() => ({
-                    //         productImage: response.data,
-                    //     }));
-                    // })
+                console.log(this.state.loggedInUserId)
+                console.log(this.state.productId)
+                API.getOneProduct({
+                    _id: this.state.productId
+                })
+                    .then(response => {
+                        console.log(response.data)
+                        this.setState(() => ({
+                            productImage: response.data,
+                        }));
+                    })
+
             } else {
                 console.log("no logged in user")
             }
@@ -52,7 +59,7 @@ export default class OneItem extends Component {
     render() {
         return (
             <div>
-                <h2>Item</h2>
+                <h2>The Item</h2>
                 <ImageList images={this.state.productImage} />
             </div>
         )
