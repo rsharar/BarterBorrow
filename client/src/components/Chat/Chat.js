@@ -25,8 +25,8 @@ class Chat extends React.Component {
             // proposalId: this.props.proposalId ? this.props.proposalId : null
 
 
-            // query: "r_var=" + this.props.proposalId ? this.props.proposalId : ''
-            query: 'r_var=' + '5c5b93e31b64a4e0f8f36a89'
+            query: "r_var=" + this.props.proposalId ? this.props.proposalId : ''
+            // query: 'r_var=' + '5c5b93e31b64a4e0f8f36a89'
 
 
             // proposal page makes api call to get proposal data and passes id to chat component
@@ -102,7 +102,8 @@ class Chat extends React.Component {
 
             this.setState({
                 // TODO: set equal to this.props.proposalId
-                room: '5c5b93e31b64a4e0f8f36a89'
+                // room: '5c5b93e31b64a4e0f8f36a89'
+                room: this.props.proposalId ? this.props.proposalId : ''
             })
         })
 

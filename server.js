@@ -134,13 +134,10 @@ io.on('connection', (socket) => {
 
 	socket.on('disconnect', function () {
 		socket.leave(roomId)
-		
 		console.log('user disconnected from room ' + roomId);
 	});
 
 	socket.on('SEND_MESSAGE', function (msg) {
-		// pass the roomId from the client so that it is fed into the msg parameter 
-
 		io.to(msg.room).emit('RECEIVE_MESSAGE', msg);
 	});
 
