@@ -93,9 +93,9 @@ class Sidenav extends React.Component {
         <Sidebar
           sidebar={
             <div id="sidebar-items">
-              <Link to="/users/profile" className="sidebar-link" onClick={() => this.onSetSidebarOpen(false)}>
+              {/* <Link to="/users/profile" className="sidebar-link" onClick={() => this.onSetSidebarOpen(false)}>
                 <h4>Profile</h4>
-              </Link>
+              </Link> */}
               <Link to="/users/items" className="sidebar-link" onClick={() => this.onSetSidebarOpen(false)}>
                 <h4>My Items</h4>
               </Link>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import API from '../../utils/API';
+import { Link } from 'react-router-dom';
 import './style.css'
 
 export default class NavCategory extends Component {
@@ -8,6 +9,8 @@ export default class NavCategory extends Component {
         this.state = {
             category: '',
             searchQuery: '',
+            redirect: false
+            // images: []
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -25,13 +28,14 @@ export default class NavCategory extends Component {
         if (this.state.category) {
             // this.state.category is updated based on dropdown selection
             API.getProductsByCategory({
-                category: this.state.category
+                category: this.state.category,
+                redirect: this.state.redirect
             })
                 .then(response => {
                     // return all matching products with category
                     console.log(response.data)
                     // update state of empty products []
-                    this.setState({ images: response.data })
+                    // this.setState({ images: response.data })
                 })
                 .catch(err => {
                     console.log("SEARCH BY CATEGORY ERROR: ", err)
@@ -45,15 +49,13 @@ export default class NavCategory extends Component {
                     // return all matching products with like title
                     console.log(response.data)
                     // update state of empty items []
-                    this.setState({ images: response.data })
+                    // this.setState({ images: response.data })
                 })
                 .catch(err => {
                     console.log("SEARCH BY SEARCH ERROR: ", err)
                 });
         }
     }
-
-    
     render() {
         return (
             <div>
@@ -86,15 +88,26 @@ export default class NavCategory extends Component {
                         </select>
                     </div>
                     <div className="col s1">
-                        <button id="searchBtn"
-                            onClick={this.handleSubmit}
-                            className="btn waves-effect waves-light" type="submit" name="action" style={{ width: '150px' }}>Find items!
-                            </button>
+                        <Link to={{
+                            pathname: "/searchresults",
+                            state: {
+                                searchQuery: this.state.searchQuery,
+                                category:
+                                    this.state.searchQuery
+                            }
+                        }}>
+                            <button id="searchBtn"
+                                onClick={this.handleSubmit}
+                                className="btn waves-effect waves-light" type="submit" name="action" style={{ width: '150px' }}>Find items!
+                        </button>
+                        </Link>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }
+
+
 
 

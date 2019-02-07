@@ -13,6 +13,7 @@ import AllImages from './components/Card/images'
 import UserImages from './components/UserCard/userimages'
 import OneItem from './components/OneItem/oneimage'
 import Proposal from './components/Proposal/proposalimage';
+import SearchCards from './components/SearchCards/searchimages';
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
@@ -163,6 +164,7 @@ class App extends Component {
 				<Route exact path="/signup" component={SignupForm} />
 				<Route exact path="/users/post" component={PostItemForm} />
 				<Route exact path="/browse" component={AllImages} />
+				<Route exact path="/searchresults" component={SearchCards} />
 				<Route exact path="/users/items" component={UserImages} />
 				<Route path='/items/:id' exact component={OneItem} />
 				<Route path='/proposals/:proposalid' exact component={Proposal} />
