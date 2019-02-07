@@ -11,3 +11,12 @@
 .sidebar-link:hover{
     color: blue;
 }
+
+i.material-icons {
+    color: #444;
+}
+
+.sideBtn{
+    margin-top: 20px;
+    margin-left: -220px;
+}
