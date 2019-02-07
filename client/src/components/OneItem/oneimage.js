@@ -50,10 +50,16 @@ export default class OneItem extends Component {
             <div>
                 <h2>The Item</h2>
                 <ImageList images={this.state.productImage} />
-                <Link to={`/proposals/${proposalId}`}>
+                <Link to={{
+                    pathname: `/proposals/${proposalId}`,
+                    state: {
+                        productId: this.state.productId
+                    }
+                }}
+                >
                     <button class="waves-effect waves-light btn" style={{ color: "white", fontSize: "24px", marginBottom: "20px" }}>Make a proposal</button>
-                    </Link>
+                </Link>
             </div>
-                )
-            }
+        )
+    }
 }

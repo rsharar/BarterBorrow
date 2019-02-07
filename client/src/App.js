@@ -165,7 +165,7 @@ class App extends Component {
 				<Route exact path="/browse" component={AllImages} />
 				<Route exact path="/users/items" component={UserImages} />
 				<Route path='/items/:id' exact component={OneItem} />
-				<Route path='/proposals/:id' exact component={Proposal} />
+				<Route path='/proposals/:proposalid' exact component={Proposal} />
 				<Footer />
 			</div>
 		)
