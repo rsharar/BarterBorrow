@@ -9,6 +9,7 @@ export default class Images extends Component {
         super();
         this.state = {
             owneruserid: '',
+            productId: '',
             allimages: []
         };
     }
@@ -17,14 +18,16 @@ export default class Images extends Component {
             API.getAllProducts()
                 .then(response => {
                     console.log(response.data)
-                    this.setState(() => ({ allimages: response.data }));
+                    this.setState(() => ({ 
+                        allimages: response.data,
+                    }));
                 })
                 .catch(err => {
                     console.log("POST ITEM ERROR: ", err)
                 });
+
         })
     }
-
     render() {
         return (
             <div>
