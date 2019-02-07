@@ -1,0 +1,50 @@
+.card {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    max-width: 300px;
+    width: 300px;
+}
+
+.card.card-image {
+    height: 450px;
+}
+
+.card-content {
+    font-size: 1rem;
+}
+
+.card-deck {
+    display: inline-flex;
+    width:  100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header {
+    height: 100px;
+}
+
+img.card-img-top {
+    border-style: outset;
+}
+
+.row .col.s3 {
+    width: 100%;
+}
+
+@media only screen and (min-width: 993px) {
+.row .col.l3 {
+    width: 20%;
+}
+}
+
+@media only screen and (min-width: 993px){
+.container {
+    width: 100%;
+}
+}
+
+.container {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 100px;
+}

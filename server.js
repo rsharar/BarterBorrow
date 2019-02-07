@@ -15,8 +15,14 @@ const passport = require('./passport')
 const routes = require('./routes')
 // const keys = require('./config/keys');
 // const cookieSession = require('cookie-session');
-const app = express()
+const app = module.exports.app = express();
 const PORT = process.env.PORT || 3001
+var http = require('http')
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);  //pass a http.Server instance
+server.listen(PORT + 1);  //listen on port 80
+const proposalController = require('./controllers/proposalController')
+const axios = require('axios')
 
 // ===== Middleware ====
 app.use(morgan('dev'))
@@ -35,11 +41,11 @@ app.use(
 	})
 )
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	next();
-  });
+});
 
 // ===== Passport ====
 app.use(passport.initialize())
@@ -52,11 +58,11 @@ app.use(passport.session()) // will call the deserializeUser
 // }));
 
 // ===== testing middleware =====
-app.use(function(req, res, next) {
-	console.log('===== passport user =======')
-	console.log("Session: " + req.session)
-	console.log("User: " + req.user)
-	console.log('===== END =======')
+app.use(function (req, res, next) {
+	// console.log('===== passport user =======')
+	// console.log("Session: " + req.session)
+	// console.log("User: " + req.user)
+	// console.log('===== END =======')
 	next()
 })
 // testing
@@ -88,11 +94,63 @@ app.use('/auth', require('./auth'))
 app.use(routes)
 
 // ====== Error handler ====
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
 	console.log('====== ERROR =======')
 	console.error(err.stack)
 	res.status(500)
 })
+
+// io.on('connection', (socket) => {
+//     console.log(socket.id);
+// 	// console.log("NEW SOCKET CONNECTION")
+//     socket.on('SEND_MESSAGE', function(data){
+//         // console.log("BACKEND SEND RECEIPT")
+//         io.emit('RECEIVE_MESSAGE', data);
+//     })
+// });
+
+io.on('connection', (socket) => {
+	var roomId = socket.handshake['query']['r_var']
+	if (roomId) {
+		// join the exisiting room
+		socket.join(roomId);
+	} else {
+		// create a new proposal 
+		var proposal = proposalController.create({ userIdA: '5c5a76e8b8e48eb334b78c22', userIdB: '5c5a7c162324ccb3dd53da33' })
+		// console.log(proposal)
+		proposal.then(data => {
+			console.log(data)
+			roomId = data._id
+			socket.join(roomId)
+			io.emit('GET_ROOM', roomId)
+		})
+		
+
+		// axios.post("/api/proposals", { userIdA: '5c5a76e8b8e48eb334b78c22', userIdB: '5c5a7c162324ccb3dd53da33' })
+		// 	.then(data => {
+		// 		roomId = data._id
+		// 		console.log("PROPOSAL CREATED:")
+		// 		console.log(data)
+		// 	}).catch(err => console.log(err));
+		// socket.join(roomId)
+	}
+
+	console.log('**************************');
+	console.log('user joined room ' + roomId);
+	console.log('**************************');
+
+	socket.on('disconnect', function () {
+		socket.leave(roomId)
+		console.log('user disconnected');
+	});
+
+	socket.on('SEND_MESSAGE', function (msg) {
+		// pass the roomId from the client so that it is fed into the msg parameter 
+
+		io.to(msg.room).emit('RECEIVE_MESSAGE', msg);
+	});
+
+});
 
 // ==== Starting Server =====
 app.listen(PORT, () => {

@@ -11,14 +11,20 @@ module.exports = {
             .then(dbProduct => res.json(dbProduct))
             .catch(err => res.status(422).json(err));
     },
-    findByCategory: function (req, res){
-        db.Product.find({category: req.params.category})
+    findByCategory: function (req, res) {
+        db.Product.find({ category: req.params.category })
             .then(dbProduct => res.json(dbProduct))
             .catch(err => res.status(422).json(err));
     },
-    findByTitle: function (req, res){
+    findByTitle: function (req, res) {
         let searchQuery = req.params.searchQuery;
-        db.Product.find({title: new RegExp(searchQuery, "i")})
+        db.Product.find({ title: new RegExp(searchQuery, "i") })
+            .then(dbProduct => res.json(dbProduct))
+            .catch(err => res.status(422).json(err));
+    },
+    findByUserId: function (req, res){
+        console.log('here')
+        db.Product.find({owneruserid: req.params.owneruserid})
             .then(dbProduct => res.json(dbProduct))
             .catch(err => res.status(422).json(err));
     },
@@ -28,7 +34,7 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     update: function (req, res) {
-        db.Product.findOneAndUpdate({ id: req.params.id }, req.body)
+        db.Product.findByIdAndUpdate({ id: req.params.id }, req.body)
             .then(dbProduct => res.json(dbProduct))
             .catch(err => res.status(422).json(err));
     },
