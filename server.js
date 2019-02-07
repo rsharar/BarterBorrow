@@ -114,39 +114,30 @@ io.on('connection', (socket) => {
 	if (roomId) {
 		// join the exisiting room
 		socket.join(roomId);
+		console.log('***** user joined room ' + roomId);
 	} else {
 		// create a new proposal 
-		var proposal = proposalController.create({ userIdA: '5c5a76e8b8e48eb334b78c22', userIdB: '5c5a7c162324ccb3dd53da33' })
+		var proposal = proposalController.create({
+			userIdA: '5c5a76e8b8e48eb334b78c22',
+			userIdB: '5c5a7c162324ccb3dd53da33',
+			chatHistory: [{ uniqueId: Math.random() }]
+		})
 		// console.log(proposal)
 		proposal.then(data => {
 			console.log(data)
 			roomId = data._id
 			socket.join(roomId)
 			io.emit('GET_ROOM', roomId)
+			console.log('***** user joined room ' + roomId);
 		})
-		
-
-		// axios.post("/api/proposals", { userIdA: '5c5a76e8b8e48eb334b78c22', userIdB: '5c5a7c162324ccb3dd53da33' })
-		// 	.then(data => {
-		// 		roomId = data._id
-		// 		console.log("PROPOSAL CREATED:")
-		// 		console.log(data)
-		// 	}).catch(err => console.log(err));
-		// socket.join(roomId)
 	}
-
-	console.log('**************************');
-	console.log('user joined room ' + roomId);
-	console.log('**************************');
 
 	socket.on('disconnect', function () {
 		socket.leave(roomId)
-		console.log('user disconnected');
+		console.log('user disconnected from room ' + roomId);
 	});
 
 	socket.on('SEND_MESSAGE', function (msg) {
-		// pass the roomId from the client so that it is fed into the msg parameter 
-
 		io.to(msg.room).emit('RECEIVE_MESSAGE', msg);
 	});
 
