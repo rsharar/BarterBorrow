@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ImageCard from './imageCard';
+import ImageCard from './proposalimagecard';
+import './style.css';
+
 
 const getimages = (image) => {
     return (
         <div className="row">
-                <ImageCard key={image._id} image={image} />
+              <ImageCard key={image._id} image={image} />
         </div>
     );
 };

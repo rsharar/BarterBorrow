@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import { Link } from 'react-router-dom';
 import './style.css';
 
 
 const ImageCard = (props) => (
+  <div>
   <div className="card col s12">
     <div className="card-image waves-effect waves-block waves-light">
       <img className="activator responsive-img" src={props.image.imageurl} alt="Office" />
@@ -18,6 +20,8 @@ const ImageCard = (props) => (
       <p><b>Status: </b>{props.image.status}</p>
     </div>
   </div>
+
+        </div>
 );
 
 ImageCard.defaultProps = {
