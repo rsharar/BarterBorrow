@@ -5,9 +5,7 @@ import ImageCard from './imageCard';
 const getimages = (image) => {
     return (
         <div className="row">
-            {
                 <ImageCard key={image._id} image={image} />
-            }
         </div>
     );
 };

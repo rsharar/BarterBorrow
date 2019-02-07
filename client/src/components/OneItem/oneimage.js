@@ -41,26 +41,12 @@ export default class OneItem extends Component {
             }
         })
     }
-    // use redirect comp
-    // in new comp, onComponentDidMount (this.props) -->
-    // move route to singleItemComponent
-    //   console.log(props.image._id)
-    //   API.getOneProduct({
-    //     _id: props.image._id
-    //   })
-    //     .then(response => {
-    //       console.log(response)
-    //       console.log("Proudct found!")
-    //     })
-    //     .catch(err => {
-    //       console.log("CANNOT FIND PRODUCT ERROR: ", err)
-    //     });
-    // }
     render() {
         return (
             <div>
                 <h2>The Item</h2>
                 <ImageList images={this.state.productImage} />
+                <button class="waves-effect waves-light btn" style={{color: "white", fontSize: "24px", marginBottom: "20px"}}>Make a proposal</button>
             </div>
         )
     }

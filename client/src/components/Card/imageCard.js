@@ -18,7 +18,6 @@ const ImageCard = (props) => (
       <p><b>Description:</b> {props.image.description}</p>
       <p><b>Location:</b> {props.image.location}</p>
       <p><b>Status:</b> {props.image.status}</p>
-      <p><b>Id:</b> {props.image._id}</p>
       <Link to={`/items/${props.image._id}`}>
       <button>Get this item!</button>
       </Link>
