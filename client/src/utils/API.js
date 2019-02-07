@@ -7,7 +7,8 @@ export default {
     },
     // Gets the product with the given id
     getOneProduct: function (id) {
-        return axios.get("/api/products/" + id);
+        let productId = id._id
+        return axios.get("/api/products/" + productId);
     },
     // Gets all products associated with a user
     getProductsByUserId: function (userId) {
