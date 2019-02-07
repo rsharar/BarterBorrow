@@ -7,12 +7,24 @@ class Chat extends React.Component {
         super(props);
 
         this.state = {
+            userId: '',
             username: '',
             message: '',
-            messages: []
+            messages: [],
+            room: ''
         };
 
-        this.socket = io('localhost:' + ((process.env.PORT || 3001) + 1));
+
+        // const ownerID = props.owneruserid;
+        // const ownerId;
+
+        this.socket = io('localhost:' + ((process.env.PORT || 3001) + 1),{
+            // query: 'r_var=private_room',
+            // userA: 'r_var=',
+            // proposalId: this.props.proposalId ? this.props.proposalId : null
+            query: "r_var=" + this.props.proposalId ? this.props.proposalId : ''
+            // proposal page makes api call to get proposal data and passes id to chat component
+        });
 
         // var socket_connect = function (room) {
         //     return io('localhost:' + ((process.env.PORT || 3001) + 1), {
@@ -24,6 +36,10 @@ class Chat extends React.Component {
         // var socket      = socket_connect(random_room);
         
         // socket.emit('SEND_MESSAGE', 'hello room #'+random_room);
+
+        this.socket.on('GET_ROOM', room => {
+            console.log(room)
+        })
 
         this.socket.on('RECEIVE_MESSAGE', function (data) {
             // console.log("FRONT END RECEIPT")
@@ -56,6 +72,9 @@ class Chat extends React.Component {
                     // google firstname
                     this.setState({
                         username: response.data.user.firstName
+                    })
+                    this.setState({
+                        userId: response.data.user
                     })
                 } else {
                     // local username
