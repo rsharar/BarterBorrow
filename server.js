@@ -100,15 +100,6 @@ app.use(function (err, req, res, next) {
 	res.status(500)
 })
 
-// io.on('connection', (socket) => {
-//     console.log(socket.id);
-// 	// console.log("NEW SOCKET CONNECTION")
-//     socket.on('SEND_MESSAGE', function(data){
-//         // console.log("BACKEND SEND RECEIPT")
-//         io.emit('RECEIVE_MESSAGE', data);
-//     })
-// });
-
 io.on('connection', (socket) => {
 	var roomId = socket.handshake['query']['r_var']
 	if (roomId) {

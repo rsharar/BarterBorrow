@@ -43,8 +43,8 @@ export default {
     // ------------------------------
 
     // Gets all proposals
-    getAllProposalsWithUser: function () {
-        return axios.get("/api/proposals");
+    getAllProposalsWithUser: function (userId) {
+        return axios.get("/api/proposals/" + userId);
     },
     // Gets the proposal with the given id
     getOneProposal: function (id) {
