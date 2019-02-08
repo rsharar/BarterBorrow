@@ -1,8 +1,8 @@
 const db = require("../db/models");
 
 module.exports = {
-    findAll: function (req, res) {
-        db.Proposal.find(req.query)
+    findAllWithUserId: function (req, res) {
+        db.Proposal.find({ userIdA: req.params.userId })
             .then(dbProposal => res.json(dbProposal))
             .catch(err => res.status(422).json(err));
     },

@@ -14,31 +14,41 @@ class Chat extends React.Component {
             room: ''
         };
 
-
+        console.log("PROPS:")
+        console.log(this.props)
         // const ownerID = props.owneruserid;
         // const ownerId;
+        
 
         this.socket = io('localhost:' + ((process.env.PORT || 3001) + 1),{
             // query: 'r_var=private_room',
             // userA: 'r_var=',
             // proposalId: this.props.proposalId ? this.props.proposalId : null
-            query: "r_var=" + this.props.proposalId ? this.props.proposalId : ''
+
+
+            // query: "r_var=" + (this.props.proposalId ? this.state.proposalId : '*') + ',' + JSON.stringify(this.props.ownerId) + ',' + this.state.userId
+            // query: passRoom(this.state.room, this.props.proposalId)
+            query: 'r_var=' + '5c5cd0b66de07d2d885cf14b'
+
+
             // proposal page makes api call to get proposal data and passes id to chat component
         });
 
-        // var socket_connect = function (room) {
-        //     return io('localhost:' + ((process.env.PORT || 3001) + 1), {
-        //         query: 'r_var='+room
-        //     });
+        // function passRoom(room, propID) {
+        //     if (room) {
+        //         return "r_var=" + room
+        //     } else {
+        //         return "r_var=" + propID ? propID : ''
+        //     }
         // }
-        
-        // var random_room = Math.floor((Math.random() * 2) + 1);
-        // var socket      = socket_connect(random_room);
-        
-        // socket.emit('SEND_MESSAGE', 'hello room #'+random_room);
+        // this.socket.emit("USER_IDS", {idA: this.state.userId, idB: this.props.ownerId})
 
-        this.socket.on('GET_ROOM', room => {
-            console.log(room)
+
+        this.socket.on('GET_ROOM', thisRoom => {
+            console.log(thisRoom)
+            this.setState({
+                room: thisRoom
+            })
         })
 
         this.socket.on('RECEIVE_MESSAGE', function (data) {
@@ -46,6 +56,10 @@ class Chat extends React.Component {
             // console.log(data)
             addMessage(data);
         });
+
+        this.socket.on('SAVE_HISTORY', () => {
+
+        })
 
         const addMessage = data => {
             // console.log(data);
@@ -57,6 +71,7 @@ class Chat extends React.Component {
         this.sendMessage = ev => {
             ev.preventDefault();
             this.socket.emit('SEND_MESSAGE', {
+                room: this.state.room,
                 author: this.state.username,
                 message: this.state.message
             })
@@ -64,7 +79,7 @@ class Chat extends React.Component {
             // console.log("FRONT END SEND")
         }
     }
-
+    
     componentDidMount() {
         axios.get('/auth/user').then(response => {
             if (!!response.data.user) {
@@ -85,10 +100,15 @@ class Chat extends React.Component {
             } else {
                 console.log("USER NOT LOGGED IN")
             }
-        })
 
-        
+            this.setState({
+                // TODO: set equal to this.props.proposalId
+                room: '5c5cd0b66de07d2d885cf14b'
+                // room: this.props.proposalId ? this.props.proposalId : ''
+            })
+        })
     }
+    
 
     render() {
         return (
@@ -97,7 +117,7 @@ class Chat extends React.Component {
                     <div className="col-4">
                         <div className="card">
                             <div className="card-body">
-                                <div className="card-title">Global Chat</div>
+                                <div className="card-title">Chat</div>
                                 <hr />
                                 <div className="messages">
                                     {this.state.messages.map(message => {
@@ -109,8 +129,6 @@ class Chat extends React.Component {
 
                             </div>
                             <div className="card-footer">
-                                {/* <input type="text" placeholder="Username" value={this.state.username} className="form-control" />
-                                <br /> */}
                                 <input type="text" placeholder="Message" className="form-control" value={this.state.message} onChange={ev => this.setState({ message: ev.target.value })} />
                                 <br />
                                 <button onClick={this.sendMessage} className="btn btn-primary form-control">Send</button>
