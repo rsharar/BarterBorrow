@@ -11,7 +11,7 @@ export default class Proposal extends Component {
         super(props);
         this.state = {
             loggedinuserid: '',
-            productId: '',
+            productId: this.props.location.state.productId,
             loggedInUserImages: [],
             productOwnerImages: []
         };
@@ -24,7 +24,7 @@ export default class Proposal extends Component {
             if (!!response.data.user) {
                 this.setState({
                     loggedinuserid: response.data.user._id,
-                    productId: this.props.location.state.productId
+                    // productId: this.props.location.state.productId
                 })
                 API.getProductsByUserId({
                     owneruserid: this.state.loggedinuserid
@@ -64,7 +64,7 @@ export default class Proposal extends Component {
                     </div>
                 </div>
                 <div className="col s4">
-                    <Chat />
+                    <Chat ownerId={this.state.productId}/>
                 </div>
             </div>
 

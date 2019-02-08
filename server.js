@@ -101,8 +101,15 @@ app.use(function (err, req, res, next) {
 })
 
 io.on('connection', (socket) => {
-	var roomId = socket.handshake['query']['r_var']
-	if (roomId) {
+	var handshake = socket.handshake['query']['r_var']
+	console.log("HANDSHAKE:")
+	handshake = handshake.split(',')
+	console.log(handshake)
+	roomId = handshake[0]
+	var userA = handshake[1]
+	var userB = handshake[2]
+	console.log(userA)
+	if (roomId !== '*') {
 		// join the exisiting room
 		socket.join(roomId);
 		console.log('***** user joined room ' + roomId);
@@ -115,7 +122,7 @@ io.on('connection', (socket) => {
 		})
 		// console.log(proposal)
 		proposal.then(data => {
-			console.log(data)
+			// console.log(data)
 			roomId = data._id
 			socket.join(roomId)
 			io.emit('GET_ROOM', roomId)
