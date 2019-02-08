@@ -1,8 +1,22 @@
 .SignupForm {
         padding-left: 30px;
         padding-right: 30px;
-        width: 500px
+        width: 500px;
+        margin-bottom: 60px;
+        font-size: 18px;
+        text-align: center;
 }
+
+#signupbox{
+    width: 30%;
+}
+
+.signupboxform{
+    margin-right: 20px;
+    margin-left: 20px;
+
+}
+
 
 h4 {
     padding-top: 20px;
