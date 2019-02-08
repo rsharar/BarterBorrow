@@ -135,7 +135,7 @@ class App extends Component {
 				password
 			})
 			.then(response => {
-				console.log(response)
+				// console.log(response)
 				if (response.status === 200) {
 					// update the state
 					this.setState({
@@ -164,7 +164,7 @@ class App extends Component {
 				<Route exact path="/signup" component={SignupForm} />
 				<Route exact path="/users/post" component={PostItemForm} />
 				<Route exact path="/browse" component={AllImages} />
-				<Route exact path="/searchresults" component={SearchCards} />
+				<Route path="/searchresults" component={SearchCards}/>
 				<Route exact path="/users/items" component={UserImages} />
 				<Route path='/items/:id' exact component={OneItem} />
 				<Route path='/proposals/:proposalid' exact component={Proposal} />

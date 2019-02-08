@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import API from '../../utils/API';
 import { Link } from 'react-router-dom';
-import './style.css'
+// import { Redirect } from 'react-router'
+import './style.css';
 
 export default class NavCategory extends Component {
     constructor() {
@@ -9,8 +10,8 @@ export default class NavCategory extends Component {
         this.state = {
             category: '',
             searchQuery: '',
-            redirect: false
-            // images: []
+            // redirect: false,
+            images: []
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -21,6 +22,7 @@ export default class NavCategory extends Component {
             [event.target.name]: event.target.value,
         })
     }
+
     handleSubmit(event) {
         console.log("Search: " + this.state.searchQuery)
         event.preventDefault()
@@ -29,13 +31,12 @@ export default class NavCategory extends Component {
             // this.state.category is updated based on dropdown selection
             API.getProductsByCategory({
                 category: this.state.category,
-                redirect: this.state.redirect
             })
                 .then(response => {
                     // return all matching products with category
                     console.log(response.data)
                     // update state of empty products []
-                    // this.setState({ images: response.data })
+                    // this.setState({ redirect: true })
                 })
                 .catch(err => {
                     console.log("SEARCH BY CATEGORY ERROR: ", err)
@@ -49,12 +50,13 @@ export default class NavCategory extends Component {
                     // return all matching products with like title
                     console.log(response.data)
                     // update state of empty items []
-                    // this.setState({ images: response.data })
+                    // this.setState({ redirect: true })
                 })
                 .catch(err => {
                     console.log("SEARCH BY SEARCH ERROR: ", err)
                 });
         }
+        // return <Redirect to="/searchresults"/>
     }
     render() {
         return (
@@ -89,17 +91,17 @@ export default class NavCategory extends Component {
                     </div>
                     <div className="col s1">
                         <Link to={{
-                            pathname: "/searchresults",
+                            pathname: '/searchresults',
                             state: {
                                 searchQuery: this.state.searchQuery,
                                 category:
-                                    this.state.searchQuery
+                                    this.state.category
                             }
                         }}>
                             <button id="searchBtn"
                                 onClick={this.handleSubmit}
                                 className="btn waves-effect waves-light" type="submit" name="action" style={{ width: '150px' }}>Find items!
-                        </button>
+                            </button>
                         </Link>
                     </div>
                 </div>

@@ -7,13 +7,13 @@ export default class Images extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            category: '',
-            searchQuery: this.props.location.state.searchQuery,
+            category: 'sports',
+            searchQuery: 'ski',
             allimages: []
         };
     }
     componentDidMount() {
-            console.log("Search: " + this.props.location.state.searchQuery)
+            // console.log("Search: " + this.props.location.state.searchQuery)
             // Validation with category selected
             if (this.state.category) {
                 // this.state.category is updated based on dropdown selection
@@ -45,7 +45,6 @@ export default class Images extends Component {
                     });
             }
         }
-
     render() {
         return (
             <div>
