@@ -54,7 +54,7 @@ const DisplayLinks = props => {
 			<div>
 				<nav>
 					<div className="nav-wrapper row">
-					<a href="/" className="brand-logo left">Logo</a>
+					{/* <a href="/" className="brand-logo left"></a> */}
 						<ul id="nav-mobile" className="hide-on-med-and-down center">
 							<NavCategory />
 							{/* <div className="col s2"></div> */}
