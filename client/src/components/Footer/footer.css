@@ -11,3 +11,7 @@ body {
   .page-footer {
     background-color: black;
 }
+
+.Footer {
+    margin-top: -7px;
+}

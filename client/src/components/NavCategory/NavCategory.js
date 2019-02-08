@@ -58,19 +58,20 @@ export default class NavCategory extends Component {
         return (
             <div>
                 <div className="navbox">
-                    <div className="row searchBar col s0.5">
-                        <div className="input-field col s6 s12 red-text">
-                            <i className="material-icons left">search</i>
+                    <div className="row searchBar col s1">
+                        <div className="input-field col m6 s12 red-text">
+                            {/* <i className="material-icons left">search</i> */}
+                           <a href="/"><img src={require('../../images/polycode_logo.png')} height="50px" width="50px" alt="logo"/></a>
                         </div>
                     </div>
-                    <div className="col s2.5">
+                    <div className="col s2">
                         <input
                             name="searchQuery"
                             type="text"
                             value={this.state.searchQuery}
                             onChange={this.handleChange}
-                            style={{ width: '300px' }}
-                            placeholder="search"
+                            style={{ width: '200px' }}
+                            placeholder="Search items"
                             id="autocomplete-input" className="autocomplete white-text" />
                     </div>
                     <div className="postItemFields col s2">

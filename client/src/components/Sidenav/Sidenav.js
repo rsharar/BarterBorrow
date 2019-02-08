@@ -111,8 +111,8 @@ class Sidenav extends React.Component {
           onSetOpen={this.onSetSidebarOpen}
           styles={sidebarStyle}
         >
-          <button style={btnStyle} onClick={() => this.onSetSidebarOpen(true)}>
-            Open sidebar
+          <button className="sideBtn" style={btnStyle} onClick={() => this.onSetSidebarOpen(true)}>
+          <i className="material-icons">dashboard</i>
         </button>
         </Sidebar>
       )

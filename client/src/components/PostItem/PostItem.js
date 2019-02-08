@@ -3,7 +3,7 @@ import API from '../../utils/API';
 import './style.css'
 import axios from 'axios'
 // import { Redirect } from 'react-router-dom'
-import Chat from '../Chat/Chat'
+// import Chat from '../Chat/Chat'
 
 class PostItemForm extends Component {
     constructor() {
