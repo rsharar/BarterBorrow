@@ -13,16 +13,21 @@ const Footer = props => {
               </div>
               <div className="col l6 s12">
                 <h5 className="white-text">Meet the team</h5>
-                <p className="grey-text text-lighten-4">Share and care about your community.</p>
+                <ul>
+                  <li><a className="grey-text text-lighten-3" href="https://www.linkedin.com/in/ethan-fisher-014678168/">Ethan Fisher</a></li>
+                  <li><a className="grey-text text-lighten-3" href="https://www.linkedin.com/in/rudy-sharar-a303452a/">Rudy Sharar</a></li>
+                  <li><a className="grey-text text-lighten-3" href="https://www.linkedin.com/in/albertcoder/">Albert Snowlove</a></li>
+                  {/* <li><a className="grey-text text-lighten-3" href="#!">Link 4</a></li> */}
+                </ul>
               </div>
               <div className="col l4 offset-l2 s12">
-                <h5 className="white-text">Talk to us!</h5>
-                <ul>
+                {/* <h5 className="white-text">Talk to us!</h5> */}
+                {/* <ul>
                   <li><a className="grey-text text-lighten-3" href="#!">Link 1</a></li>
                   <li><a className="grey-text text-lighten-3" href="#!">Link 2</a></li>
                   <li><a className="grey-text text-lighten-3" href="#!">Link 3</a></li>
                   <li><a className="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>
