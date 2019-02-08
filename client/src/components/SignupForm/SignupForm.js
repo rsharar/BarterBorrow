@@ -50,10 +50,11 @@ class SignupForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		}
 		return (
-			<div className="SignupForm container z-depth-3">
+			<div className="SignupForm container z-depth-3" id="signupbox">
+				<div className="signupboxform">
 				<h4>Signup form</h4>
 				<i className="material-icons left">person</i>
-				<label htmlFor="username">Username: </label>
+				<label className="labelname" htmlFor="username">Username: </label>
 				<input
 					type="text"
 					name="username"
@@ -61,20 +62,21 @@ class SignupForm extends Component {
 					onChange={this.handleChange}
 				/>
 				<i className="material-icons left">lock</i>
-				<label htmlFor="password">Password: </label>
+				<label className="labelname" htmlFor="password">Password: </label>
 				<input
 					type="password"
 					name="password"
 					value={this.state.password}
 					onChange={this.handleChange}
 				/>
-				<label htmlFor="confirmPassword">Confirm Password: </label>
+				<label className="labelname" htmlFor="confirmPassword">Confirm Password: </label>
 				<input
 					type="password"
 					name="confirmPassword"
 					value={this.state.confirmPassword}
 					onChange={this.handleChange}
 				/>
+				</div>
 				<button id="sign-up-btn" onClick={this.handleSubmit} className="btn waves-effect waves-light" type="submit" name="action">Sign up!
     <i className="material-icons right">send</i>
 				</button>

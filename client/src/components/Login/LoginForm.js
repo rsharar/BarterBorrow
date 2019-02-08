@@ -37,22 +37,24 @@ class LoginForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
 			return (
-				<div className="container z-depth-3">
+				<div className="container z-depth-3" id="box">
 					<a href="/auth/google">
 						{/* <GoogleButton /> */}
-						<img src={googleButton} alt="sign into Google Button" id="googleBtn"/>
+						<img src={googleButton} alt="sign into Google Button" id="googleBtn" />
 					</a>
 					<div> OR </div>
 					<form id="loginForm">
 						<label className="formInput" htmlFor="username">Username: </label>
 						<input
+							className="inputForm"
 							type="text"
 							name="username"
 							value={this.state.username}
 							onChange={this.handleChange}
 						/>
-						<label className="formInput"htmlFor="password">Password: </label>
+						<label className="formInput" htmlFor="password">Password: </label>
 						<input
+							className="inputForm"
 							type="password"
 							name="password"
 							value={this.state.password}
@@ -60,7 +62,7 @@ class LoginForm extends Component {
 						/>
 						<button id="login-btn" onClick={this.handleSubmit} className="btn waves-effect waves-light" type="submit" name="action">Login
     <i className="material-icons right">send</i>
-				</button>
+						</button>
 					</form>
 				</div>
 			)
