@@ -3,8 +3,11 @@ const proposalController = require("../../controllers/proposalController");
 
 // Matches with "/api/proposals"
 router.route("/")
-    .get(proposalController.findAll)
     .post(proposalController.create);
+
+// Matches with "/api/proposals/:userId"
+router.route("/:userId")
+    .get(proposalController.findAllWithUserId)
 
 // Matches with "/api/proposals/:id"
 router

@@ -8,7 +8,7 @@ export default {
     // Gets the product with the given id
     getOneProduct: function (id) {
         let productId = id._id
-        console.log(productId)
+        // console.log(productId)
         return axios.get("/api/products/" + productId);
     },
     // Gets all products associated with a user
@@ -44,8 +44,8 @@ export default {
     // ------------------------------
 
     // Gets all proposals
-    getAllProposalsWithUser: function () {
-        return axios.get("/api/proposals");
+    getAllProposalsWithUser: function (userId) {
+        return axios.get("/api/proposals/" + userId);
     },
     // Gets the proposal with the given id
     getOneProposal: function (id) {
